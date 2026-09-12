@@ -1,12 +1,12 @@
-/* =====================================================
+/* =========================================
    JALALI TECH SUPPORT
    MAIN JAVASCRIPT
-===================================================== */
+========================================= */
 
 
-/* =====================================================
+/* =========================================
    MOBILE MENU
-===================================================== */
+========================================= */
 
 const menuButton =
   document.querySelector(".menu-toggle");
@@ -58,12 +58,13 @@ if (menuButton && navLinks) {
 }
 
 
-/* =====================================================
+
+/* =========================================
    SCROLL REVEAL
-===================================================== */
+========================================= */
 
 const revealElements =
-  document.querySelectorAll(".service-card, .price-card, .project, .step, .why-grid > div");
+  document.querySelectorAll(".reveal");
 
 
 if ("IntersectionObserver" in window) {
@@ -72,51 +73,42 @@ if ("IntersectionObserver" in window) {
     new IntersectionObserver(
       function (entries) {
 
-        entries.forEach(
-          function (entry) {
+        entries.forEach(function (entry) {
 
-            if (entry.isIntersecting) {
+          if (entry.isIntersecting) {
 
-              entry.target.classList.add(
-                "reveal-visible"
-              );
+            entry.target.classList.add(
+              "visible"
+            );
 
-              revealObserver.unobserve(
-                entry.target
-              );
-
-            }
+            revealObserver.unobserve(
+              entry.target
+            );
 
           }
-        );
+
+        });
 
       },
       {
-        threshold: 0.08
+        threshold: 0.12
       }
     );
 
 
-  revealElements.forEach(
-    function (element) {
+  revealElements.forEach(function (element) {
 
-      element.classList.add(
-        "reveal-ready"
-      );
+    revealObserver.observe(element);
 
-      revealObserver.observe(
-        element
-      );
-
-    }
-  );
+  });
 
 }
 
 
-/* =====================================================
+
+/* =========================================
    FREE QUOTE FORM
-===================================================== */
+========================================= */
 
 const quoteForm =
   document.getElementById("quoteForm");
@@ -132,6 +124,7 @@ if (quoteForm) {
     function (event) {
 
       event.preventDefault();
+
 
       const formData =
         new FormData(quoteForm);
@@ -183,7 +176,7 @@ ${details}`;
       if (formMessage) {
 
         formMessage.textContent =
-          "Your quote is ready. Opening WhatsApp so you can send it directly.";
+          "Your quote is ready. Opening WhatsApp...";
 
       }
 
@@ -203,9 +196,11 @@ ${details}`;
 }
 
 
-/* =====================================================
+
+/* =========================================
    JALALI AI ASSISTANT
-===================================================== */
+   FREE RULE-BASED ASSISTANT
+========================================= */
 
 const aiButton =
   document.getElementById("aiButton");
@@ -226,88 +221,31 @@ const aiMessages =
   document.getElementById("aiMessages");
 
 
-/* =====================================================
+/* =========================================
    OPEN AI CHAT
-===================================================== */
+========================================= */
 
-function openAIChat() {
-
-  if (!aiChat || !aiButton) {
-    return;
-  }
-
-
-  aiChat.classList.add("open");
-
-  aiChat.setAttribute(
-    "aria-hidden",
-    "false"
-  );
-
-  aiButton.setAttribute(
-    "aria-expanded",
-    "true"
-  );
-
-
-  setTimeout(
-    function () {
-
-      if (aiInput) {
-        aiInput.focus();
-      }
-
-    },
-    250
-  );
-
-}
-
-
-/* =====================================================
-   CLOSE AI CHAT
-===================================================== */
-
-function closeAIChat() {
-
-  if (!aiChat || !aiButton) {
-    return;
-  }
-
-
-  aiChat.classList.remove("open");
-
-  aiChat.setAttribute(
-    "aria-hidden",
-    "true"
-  );
-
-  aiButton.setAttribute(
-    "aria-expanded",
-    "false"
-  );
-
-}
-
-
-if (aiButton) {
+if (aiButton && aiChat) {
 
   aiButton.addEventListener(
     "click",
     function () {
 
-      if (
-        aiChat &&
-        aiChat.classList.contains("open")
-      ) {
+      aiChat.classList.add("open");
 
-        closeAIChat();
+      aiChat.setAttribute(
+        "aria-hidden",
+        "false"
+      );
 
-      } else {
 
-        openAIChat();
+      setTimeout(function () {
 
-      }
+        if (aiInput) {
+          aiInput.focus();
+        }
+
+      }, 250);
 
     }
   );
@@ -315,23 +253,38 @@ if (aiButton) {
 }
 
 
-if (aiClose) {
+
+/* =========================================
+   CLOSE AI CHAT
+========================================= */
+
+if (aiClose && aiChat) {
 
   aiClose.addEventListener(
     "click",
-    closeAIChat
+    function () {
+
+      aiChat.classList.remove("open");
+
+      aiChat.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+    }
   );
 
 }
 
 
-/* =====================================================
-   AI MESSAGE FUNCTION
-===================================================== */
+
+/* =========================================
+   ADD MESSAGE
+========================================= */
 
 function addAIMessage(
   message,
-  sender = "bot"
+  type
 ) {
 
   if (!aiMessages) {
@@ -339,43 +292,29 @@ function addAIMessage(
   }
 
 
-  const wrapper =
+  const messageElement =
     document.createElement("div");
 
 
-  wrapper.className =
-    "ai-message " + sender;
+  messageElement.className =
+    "ai-message " + type;
 
 
-  if (sender === "bot") {
+  const paragraph =
+    document.createElement("p");
 
-    wrapper.innerHTML = `
 
-      <div class="message-avatar">
-        🤖
-      </div>
+  paragraph.textContent =
+    message;
 
-      <div class="message-bubble">
-        ${message}
-      </div>
 
-    `;
-
-  } else {
-
-    wrapper.innerHTML = `
-
-      <div class="message-bubble">
-        ${message}
-      </div>
-
-    `;
-
-  }
+  messageElement.appendChild(
+    paragraph
+  );
 
 
   aiMessages.appendChild(
-    wrapper
+    messageElement
   );
 
 
@@ -385,112 +324,33 @@ function addAIMessage(
 }
 
 
-/* =====================================================
-   CLEAN USER TEXT
-===================================================== */
 
-function cleanText(text) {
-
-  return text
-    .toLowerCase()
-    .trim();
-
-}
-
-
-/* =====================================================
-   FREE JALALI AI KNOWLEDGE
-===================================================== */
+/* =========================================
+   AI KNOWLEDGE
+========================================= */
 
 function getAIResponse(question) {
 
-  const q =
-    cleanText(question);
-
-
-  /* GREETING */
-
-  if (
-    q.includes("hello") ||
-    q.includes("hi") ||
-    q.includes("hey") ||
-    q.includes("salam") ||
-    q.includes("assalam")
-  ) {
-
-    return `
-      Hello! 👋<br><br>
-
-      Welcome to <strong>Jalali Tech Support</strong>.
-
-      I can help you with our services,
-      pricing, website development,
-      e-commerce, mobile apps, AI solutions
-      and free quotes.
-    `;
-
-  }
-
-
-  /* SERVICES */
-
-  if (
-    q.includes("service") ||
-    q.includes("what do you do") ||
-    q.includes("what can you") ||
-    q.includes("offer")
-  ) {
-
-    return `
-      We provide six main digital services:
-
-      <br><br>
-
-      💻 <strong>Website Development</strong> — from $300<br>
-      🛒 <strong>E-commerce Development</strong> — from $1,000<br>
-      📱 <strong>Mobile Apps</strong> — from $2,000<br>
-      🤖 <strong>AI Solutions</strong> — from $500<br>
-      ⚙️ <strong>Custom Software</strong> — from $2,000<br>
-      🎨 <strong>UI/UX Design</strong> — from $200
-
-      <br><br>
-
-      Exact pricing depends on your project requirements.
-    `;
-
-  }
+  const text =
+    question
+      .toLowerCase()
+      .trim();
 
 
   /* WEBSITE */
 
   if (
-    q.includes("website") ||
-    q.includes("web site") ||
-    q.includes("web development")
+    text.includes("website") ||
+    text.includes("web site") ||
+    text.includes("web development")
   ) {
 
-    return `
-      Yes! 💻 We build professional,
-      responsive business websites.
-
-      <br><br>
-
-      <strong>Starting price: $300+</strong>
-
-      <br><br>
-
-      We can build company websites,
-      landing pages, restaurant websites,
-      real-estate websites and custom websites.
-
-      <br><br>
-
-      <a href="#quote"
-         onclick="closeAIChat()"
-         style="color:#65c1ff;font-weight:800;">
-         REQUEST A FREE QUOTE →
-      </a>
-    `;
+    return (
+      "Yes! We build professional, responsive " +
+      "websites for businesses and entrepreneurs. " +
+      "Website projects start from $300. " +
+      "Exact pricing depends on your requirements."
+    );
 
   }
 
@@ -498,35 +358,17 @@ function getAIResponse(question) {
   /* E-COMMERCE */
 
   if (
-    q.includes("ecommerce") ||
-    q.includes("e-commerce") ||
-    q.includes("online store") ||
-    q.includes("shop")
+    text.includes("ecommerce") ||
+    text.includes("e-commerce") ||
+    text.includes("online store") ||
+    text.includes("shop")
   ) {
 
-    return `
-      Yes! 🛒 We can build online stores.
-
-      <br><br>
-
-      Features can include:
-
-      <br>
-
-      ✓ Product catalog<br>
-      ✓ Shopping cart<br>
-      ✓ Checkout<br>
-      ✓ Order management<br>
-      ✓ Mobile responsive design
-
-      <br><br>
-
-      <strong>Starting price: $1,000+</strong>
-
-      <br><br>
-
-      Exact pricing depends on the store requirements.
-    `;
+    return (
+      "Yes! We can build e-commerce stores with " +
+      "product catalogs, shopping carts, checkout " +
+      "and order management. Starting from $1,000."
+    );
 
   }
 
@@ -534,26 +376,17 @@ function getAIResponse(question) {
   /* MOBILE APP */
 
   if (
-    q.includes("mobile") ||
-    q.includes("android") ||
-    q.includes("ios") ||
-    q.includes("app")
+    text.includes("mobile") ||
+    text.includes("app") ||
+    text.includes("android") ||
+    text.includes("ios")
   ) {
 
-    return `
-      Yes! 📱 We develop mobile applications
-      for Android and iOS.
-
-      <br><br>
-
-      <strong>Starting price: $2,000+</strong>
-
-      <br><br>
-
-      The final price depends on the number
-      of screens, features, backend requirements
-      and integrations.
-    `;
+    return (
+      "Yes! We develop modern mobile applications " +
+      "for Android and iOS. Mobile app projects " +
+      "start from $2,000."
+    );
 
   }
 
@@ -561,67 +394,36 @@ function getAIResponse(question) {
   /* AI */
 
   if (
-    q.includes("ai") ||
-    q.includes("artificial intelligence") ||
-    q.includes("chatbot") ||
-    q.includes("automation")
+    text.includes(" ai") ||
+    text.startsWith("ai") ||
+    text.includes("artificial intelligence") ||
+    text.includes("chatbot")
   ) {
 
-    return `
-      Absolutely! 🤖
-
-      We can develop AI solutions such as:
-
-      <br><br>
-
-      ✓ AI customer-support chatbots<br>
-      ✓ Business automation<br>
-      ✓ AI assistants<br>
-      ✓ Intelligent tools<br>
-      ✓ AI integrations
-
-      <br><br>
-
-      <strong>AI solutions start from $500+</strong>
-
-      <br><br>
-
-      The exact cost depends on the AI features
-      and technology required.
-    `;
+    return (
+      "We provide AI solutions including chatbots, " +
+      "automation and intelligent business tools. " +
+      "AI projects start from $500 depending on " +
+      "the features and technology required."
+    );
 
   }
 
 
-  /* CUSTOM SOFTWARE */
+  /* SOFTWARE */
 
   if (
-    q.includes("custom software") ||
-    q.includes("software") ||
-    q.includes("dashboard") ||
-    q.includes("booking system")
+    text.includes("software") ||
+    text.includes("dashboard") ||
+    text.includes("system") ||
+    text.includes("portal")
   ) {
 
-    return `
-      Yes! ⚙️ We build custom software
-      for businesses.
-
-      <br><br>
-
-      Examples include:
-
-      <br>
-
-      ✓ Business dashboards<br>
-      ✓ Booking systems<br>
-      ✓ Customer portals<br>
-      ✓ Management systems<br>
-      ✓ Business automation
-
-      <br><br>
-
-      <strong>Starting price: $2,000+</strong>
-    `;
+    return (
+      "We build custom software such as dashboards, " +
+      "booking systems, portals and business management " +
+      "platforms. Custom software starts from $2,000."
+    );
 
   }
 
@@ -629,197 +431,56 @@ function getAIResponse(question) {
   /* UI UX */
 
   if (
-    q.includes("ui") ||
-    q.includes("ux") ||
-    q.includes("design")
+    text.includes("ui") ||
+    text.includes("ux") ||
+    text.includes("design")
   ) {
 
-    return `
-      🎨 We provide modern UI/UX design
-      for websites and applications.
-
-      <br><br>
-
-      <strong>Starting price: $200+</strong>
-
-      <br><br>
-
-      We focus on clean, modern and
-      user-friendly interfaces.
-    `;
+    return (
+      "We create clean and modern UI/UX designs " +
+      "for websites and applications. UI/UX projects " +
+      "start from $200."
+    );
 
   }
 
 
-  /* PRICING */
+  /* PRICE */
 
   if (
-    q.includes("price") ||
-    q.includes("pricing") ||
-    q.includes("cost") ||
-    q.includes("how much") ||
-    q.includes("budget")
+    text.includes("price") ||
+    text.includes("pricing") ||
+    text.includes("cost") ||
+    text.includes("how much") ||
+    text.includes("budget")
   ) {
 
-    return `
-      Here are our starting prices:
-
-      <br><br>
-
-      💻 Website — <strong>$300+</strong><br>
-      🛒 E-commerce — <strong>$1,000+</strong><br>
-      📱 Mobile App — <strong>$2,000+</strong><br>
-      🤖 AI Solutions — <strong>$500+</strong><br>
-      ⚙️ Custom Software — <strong>$2,000+</strong><br>
-      🎨 UI/UX Design — <strong>$200+</strong>
-
-      <br><br>
-
-      🔥 We currently advertise
-      <strong>50% OFF SELECTED SERVICES</strong>.
-
-      <br><br>
-
-      Final pricing depends on project requirements
-      and the offer applies to selected services.
-    `;
+    return (
+      "Our starting prices are: Website $300+, " +
+      "E-commerce $1,000+, Mobile App $2,000+, " +
+      "AI Solutions $500+, Custom Software $2,000+ " +
+      "and UI/UX Design $200+. Exact pricing depends " +
+      "on your project."
+    );
 
   }
 
 
-  /* OFFER */
+  /* DISCOUNT */
 
   if (
-    q.includes("50%") ||
-    q.includes("discount") ||
-    q.includes("offer") ||
-    q.includes("sale")
+    text.includes("discount") ||
+    text.includes("offer") ||
+    text.includes("50%") ||
+    text.includes("sale")
   ) {
 
-    return `
-      🔥 We have a launch offer:
-
-      <br><br>
-
-      <strong>50% OFF SELECTED SERVICES</strong>
-
-      <br><br>
-
-      Please note that final pricing depends
-      on your project requirements and the offer
-      applies to selected services.
-
-      <br><br>
-
-      Contact us for exact pricing.
-    `;
-
-  }
-
-
-  /* QUOTE */
-
-  if (
-    q.includes("quote") ||
-    q.includes("quotation") ||
-    q.includes("free quote") ||
-    q.includes("start project") ||
-    q.includes("hire")
-  ) {
-
-    return `
-      Getting a free quote is easy! 🚀
-
-      <br><br>
-
-      You can use our <strong>FREE QUOTE</strong>
-      form on this website.
-
-      <br><br>
-
-      You can also contact us directly:
-
-      <br><br>
-
-      📱 WhatsApp:
-      <strong>+971 50 875 1737</strong>
-
-      <br><br>
-
-      ✉️ Email:
-      <strong>ijalali347@gmail.com</strong>
-
-      <br><br>
-
-      <a
-        href="#quote"
-        onclick="closeAIChat()"
-        style="color:#65c1ff;font-weight:800;"
-      >
-        GO TO FREE QUOTE →
-      </a>
-    `;
-
-  }
-
-
-  /* WHATSAPP */
-
-  if (
-    q.includes("whatsapp") ||
-    q.includes("contact") ||
-    q.includes("phone") ||
-    q.includes("number")
-  ) {
-
-    return `
-      📱 You can contact Jalali Tech Support
-      directly on WhatsApp:
-
-      <br><br>
-
-      <strong>+971 50 875 1737</strong>
-
-      <br><br>
-
-      <a
-        href="https://wa.me/971508751737"
-        target="_blank"
-        rel="noopener"
-        style="color:#65c1ff;font-weight:800;"
-      >
-        CHAT ON WHATSAPP →
-      </a>
-    `;
-
-  }
-
-
-  /* EMAIL */
-
-  if (
-    q.includes("email") ||
-    q.includes("gmail")
-  ) {
-
-    return `
-      ✉️ You can email Jalali Tech Support at:
-
-      <br><br>
-
-      <strong>
-        ijalali347@gmail.com
-      </strong>
-
-      <br><br>
-
-      <a
-        href="mailto:ijalali347@gmail.com"
-        style="color:#65c1ff;font-weight:800;"
-      >
-        SEND EMAIL →
-      </a>
-    `;
+    return (
+      "We currently have a launch offer: " +
+      "50% OFF SELECTED SERVICES. Final pricing " +
+      "depends on project requirements and the offer " +
+      "applies only to selected services."
+    );
 
   }
 
@@ -827,188 +488,101 @@ function getAIResponse(question) {
   /* WORLDWIDE */
 
   if (
-    q.includes("worldwide") ||
-    q.includes("international") ||
-    q.includes("country") ||
-    q.includes("location")
+    text.includes("worldwide") ||
+    text.includes("international") ||
+    text.includes("country") ||
+    text.includes("outside")
   ) {
 
-    return `
-      🌍 Yes!
-
-      Jalali Tech Support is designed
-      to serve businesses, entrepreneurs
-      and startups worldwide.
-
-      <br><br>
-
-      You can contact us from anywhere.
-    `;
+    return (
+      "Yes! Jalali Tech Support provides digital " +
+      "development services to businesses and " +
+      "entrepreneurs worldwide."
+    );
 
   }
 
 
-  /* PORTFOLIO */
+  /* CONTACT */
 
   if (
-    q.includes("portfolio") ||
-    q.includes("projects") ||
-    q.includes("examples") ||
-    q.includes("demo")
+    text.includes("contact") ||
+    text.includes("whatsapp") ||
+    text.includes("email") ||
+    text.includes("talk")
   ) {
 
-    return `
-      🚀 Our website currently showcases
-      concept/demo projects including:
-
-      <br><br>
-
-      🍽️ Restaurant Website<br>
-      👗 Fashion E-commerce Store<br>
-      🏠 Real Estate Website<br>
-      🛵 Food Delivery App<br>
-      📊 Business Dashboard<br>
-      🤖 AI Customer Support
-
-      <br><br>
-
-      These are <strong>DEMO PROJECTS</strong>
-      created to demonstrate our capabilities.
-    `;
+    return (
+      "You can contact Jalali Tech Support on " +
+      "WhatsApp at +971 50 875 1737 or email " +
+      "ijalali347@gmail.com."
+    );
 
   }
 
 
-  /* TIME */
+  /* QUOTE */
 
   if (
-    q.includes("how long") ||
-    q.includes("timeline") ||
-    q.includes("days") ||
-    q.includes("time")
+    text.includes("quote") ||
+    text.includes("start") ||
+    text.includes("project") ||
+    text.includes("hire")
   ) {
 
-    return `
-      ⏱️ Development time depends on the
-      project scope, content, revisions and
-      technical requirements.
-
-      <br><br>
-
-      We'll discuss an estimated schedule
-      during your consultation.
-    `;
+    return (
+      "Great! You can use the FREE QUOTE form " +
+      "on this website. Tell us your project type, " +
+      "budget and requirements, then we'll discuss " +
+      "the best solution with you."
+    );
 
   }
 
 
-  /* MAINTENANCE */
+  /* GREETING */
 
   if (
-    q.includes("maintenance") ||
-    q.includes("support after") ||
-    q.includes("after launch")
+    text === "hi" ||
+    text === "hello" ||
+    text === "hey" ||
+    text.includes("good morning") ||
+    text.includes("good evening")
   ) {
 
-    return `
-      🔧 Yes. Ongoing support can be arranged
-      depending on the project and your
-      requirements.
-
-      <br><br>
-
-      Ask us about support options when
-      requesting your quote.
-    `;
-
-  }
-
-
-  /* PAYMENT */
-
-  if (
-    q.includes("payment") ||
-    q.includes("upfront") ||
-    q.includes("pay")
-  ) {
-
-    return `
-      💳 Payment schedules depend on the
-      project scope and agreement.
-
-      <br><br>
-
-      Payment terms will be clarified
-      before development begins.
-    `;
-
-  }
-
-
-  /* THANK YOU */
-
-  if (
-    q.includes("thank") ||
-    q.includes("thanks")
-  ) {
-
-    return `
-      You're very welcome! 😊
-
-      <br><br>
-
-      We're ready to help you
-      <strong>Build Your Digital Future.</strong>
-
-      🚀
-    `;
+    return (
+      "Hello! 👋 Welcome to Jalali Tech Support. " +
+      "I can help you with websites, e-commerce, " +
+      "mobile apps, AI, software, pricing and quotes."
+    );
 
   }
 
 
   /* DEFAULT */
 
-  return `
-    I'm here to help with Jalali Tech Support. 🤖
-
-    <br><br>
-
-    You can ask me things like:
-
-    <br>
-
-    • What services do you offer?<br>
-    • How much does a website cost?<br>
-    • Can you build an online store?<br>
-    • How much is a mobile app?<br>
-    • Do you provide AI solutions?<br>
-    • How can I get a free quote?<br>
-    • What is your WhatsApp number?
-
-    <br><br>
-
-    Or contact our team directly on WhatsApp.
-  `;
+  return (
+    "I can help with Jalali Tech Support services, " +
+    "pricing, websites, e-commerce, mobile apps, " +
+    "AI solutions, custom software and quotes. " +
+    "What would you like to know?"
+  );
 
 }
 
 
-/* =====================================================
-   AI FORM
-===================================================== */
 
-if (aiForm) {
+/* =========================================
+   AI FORM SUBMIT
+========================================= */
+
+if (aiForm && aiInput) {
 
   aiForm.addEventListener(
     "submit",
     function (event) {
 
       event.preventDefault();
-
-
-      if (!aiInput) {
-        return;
-      }
 
 
       const question =
@@ -1021,7 +595,7 @@ if (aiForm) {
 
 
       addAIMessage(
-        escapeHTML(question),
+        question,
         "user"
       );
 
@@ -1029,20 +603,18 @@ if (aiForm) {
       aiInput.value = "";
 
 
-      setTimeout(
-        function () {
+      setTimeout(function () {
 
-          const answer =
-            getAIResponse(question);
+        const response =
+          getAIResponse(question);
 
-          addAIMessage(
-            answer,
-            "bot"
-          );
 
-        },
-        350
-      );
+        addAIMessage(
+          response,
+          "bot"
+        );
+
+      }, 350);
 
     }
   );
@@ -1050,78 +622,91 @@ if (aiForm) {
 }
 
 
-/* =====================================================
-   QUICK BUTTONS
-===================================================== */
+
+/* =========================================
+   QUICK AI BUTTONS
+========================================= */
 
 document
   .querySelectorAll(".ai-quick-buttons button")
-  .forEach(
-    function (button) {
+  .forEach(function (button) {
 
-      button.addEventListener(
-        "click",
-        function () {
+    button.addEventListener(
+      "click",
+      function () {
 
-          const question =
-            button.getAttribute(
-              "data-question"
-            );
+        const questionType =
+          button.dataset.question;
 
 
-          if (!question) {
-            return;
-          }
+        let question = "";
+
+
+        if (questionType === "website") {
+          question =
+            "How much does a website cost?";
+        }
+
+        else if (questionType === "ecommerce") {
+          question =
+            "Can you build an e-commerce store?";
+        }
+
+        else if (questionType === "mobile") {
+          question =
+            "Can you build a mobile app?";
+        }
+
+        else if (questionType === "ai") {
+          question =
+            "What AI solutions do you provide?";
+        }
+
+        else if (questionType === "pricing") {
+          question =
+            "What are your prices?";
+        }
+
+        else if (questionType === "contact") {
+          question =
+            "How can I contact you?";
+        }
+
+
+        if (!question) {
+          return;
+        }
+
+
+        addAIMessage(
+          question,
+          "user"
+        );
+
+
+        setTimeout(function () {
+
+          const response =
+            getAIResponse(question);
 
 
           addAIMessage(
-            escapeHTML(question),
-            "user"
+            response,
+            "bot"
           );
 
+        }, 350);
 
-          setTimeout(
-            function () {
+      }
+    );
 
-              const answer =
-                getAIResponse(question);
-
-              addAIMessage(
-                answer,
-                "bot"
-              );
-
-            },
-            300
-          );
-
-        }
-      );
-
-    }
-  );
+  });
 
 
-/* =====================================================
-   ESCAPE HTML
-   Prevents user input from being interpreted as HTML.
-===================================================== */
 
-function escapeHTML(text) {
-
-  const div =
-    document.createElement("div");
-
-  div.textContent = text;
-
-  return div.innerHTML;
-
-}
-
-
-/* =====================================================
-   ESCAPE KEY
-===================================================== */
+/* =========================================
+   CLOSE CHAT WITH ESCAPE
+========================================= */
 
 document.addEventListener(
   "keydown",
@@ -1129,11 +714,17 @@ document.addEventListener(
 
     if (
       event.key === "Escape" &&
-      aiChat &&
-      aiChat.classList.contains("open")
+      aiChat
     ) {
 
-      closeAIChat();
+      aiChat.classList.remove(
+        "open"
+      );
+
+      aiChat.setAttribute(
+        "aria-hidden",
+        "true"
+      );
 
     }
 
