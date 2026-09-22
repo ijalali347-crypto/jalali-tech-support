@@ -843,3 +843,17 @@ if (aiMessages) {
     quickButtons.appendChild(demoButton);
   }
 }
+
+
+/* Reliable business-name formatter */
+function formatBusinessName(text) {
+  const ignoredWords = ["create", "make", "build", "show", "give", "me", "a", "an", "website", "demo", "preview", "for", "my"];
+  const words = text.split(" ").filter(function(word) {
+    return ignoredWords.indexOf(word.toLowerCase()) === -1;
+  });
+  const cleaned = words.join(" ").trim();
+  if (cleaned.length < 2) return "Your Business";
+  return cleaned.split(" ").map(function(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  }).join(" ");
+}
