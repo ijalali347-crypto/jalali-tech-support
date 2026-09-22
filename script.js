@@ -730,3 +730,116 @@ document.addEventListener(
 
   }
 );
+
+
+/* =========================================
+   AI DEMO GENERATOR
+========================================= */
+
+const demoSession = { waitingForBusiness: false };
+
+function isDemoRequest(text) {
+  return text.includes("demo") || text.includes("preview") ||
+    text.includes("create a website") || text.includes("make a website");
+}
+
+function formatBusinessName(text) {
+  const cleaned = text
+    .replace(/(create|make|build|show|give|me|a|an|website|demo|preview|for|my)/gi, " ")
+    .replace(/s+/g, " ")
+    .trim();
+  if (cleaned.length < 2) return "Your Business";
+  return cleaned.replace(/w/g, function(letter) { return letter.toUpperCase(); });
+}
+
+function addDemoCard(businessName) {
+  if (!aiMessages) return;
+
+  const card = document.createElement("section");
+  card.className = "ai-demo-card";
+
+  const tag = document.createElement("span");
+  tag.className = "ai-demo-tag";
+  tag.textContent = "AI WEBSITE DEMO";
+
+  const title = document.createElement("h4");
+  title.textContent = businessName;
+
+  const subtitle = document.createElement("p");
+  subtitle.textContent = "A modern online home for your business.";
+
+  const miniSite = document.createElement("div");
+  miniSite.className = "ai-demo-site";
+  miniSite.innerHTML = "<strong>" + businessName.replace(/[<>&]/g, "") + "</strong><span>Welcome. Discover what makes us different.</span><i>Explore services →</i>";
+
+  const action = document.createElement("button");
+  action.type = "button";
+  action.textContent = "REQUEST THIS DEMO";
+  action.addEventListener("click", function() {
+    const quote = document.getElementById("quote");
+    if (quote) quote.scrollIntoView({ behavior: "smooth" });
+    if (aiChat) aiChat.classList.remove("open");
+  });
+
+  card.append(tag, title, subtitle, miniSite, action);
+  aiMessages.appendChild(card);
+  aiMessages.scrollTop = aiMessages.scrollHeight;
+}
+
+function startDemoFlow(question) {
+  const business = formatBusinessName(question);
+  const hasBusiness = business !== "Your Business" && business.split(" ").length > 1;
+
+  if (hasBusiness) {
+    addAIMessage("Here is a quick demo concept for " + business + ".", "bot");
+    addDemoCard(business);
+    return;
+  }
+
+  demoSession.waitingForBusiness = true;
+  addAIMessage("Absolutely! Tell me your business name and type, for example: Bella Bakery or Nova Fitness Studio.", "bot");
+}
+
+if (aiForm && aiInput) {
+  aiForm.addEventListener("submit", function(event) {
+    const question = aiInput.value.trim();
+    const text = question.toLowerCase();
+
+    if (!question) return;
+
+    if (demoSession.waitingForBusiness) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      demoSession.waitingForBusiness = false;
+      addAIMessage(question, "user");
+      aiInput.value = "";
+      setTimeout(function() {
+        const business = formatBusinessName(question);
+        addAIMessage("Here is a quick demo concept for " + business + ".", "bot");
+        addDemoCard(business);
+      }, 350);
+      return;
+    }
+
+    if (isDemoRequest(text)) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      addAIMessage(question, "user");
+      aiInput.value = "";
+      setTimeout(function() { startDemoFlow(question); }, 350);
+    }
+  }, true);
+}
+
+if (aiMessages) {
+  const quickButtons = document.querySelector(".ai-quick-buttons");
+  if (quickButtons) {
+    const demoButton = document.createElement("button");
+    demoButton.type = "button";
+    demoButton.textContent = "✨ Create demo";
+    demoButton.addEventListener("click", function() {
+      startDemoFlow("create a demo");
+    });
+    quickButtons.appendChild(demoButton);
+  }
+}
