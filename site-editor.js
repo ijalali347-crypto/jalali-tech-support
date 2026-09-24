@@ -1,33 +1,15 @@
-/* Jalali Tech owner editor — local browser editor.
-   Changes are saved on this device. Use Export/Import to move them between devices.
-   A server/database can later add secure account login and one-click global publishing. */
 (()=>{
- const KEY="jalaliSiteEditsV1";
- const editable=[
-  ["Hero title",".hero-content h1"],["Hero subtitle",".hero-content h2"],["Hero description",".hero-content > p"],
-  ["Services heading","#services .section-heading h2"],["Services description","#services .section-heading p"],
-  ["Pricing heading","#pricing .section-heading h2"],["Pricing description","#pricing .section-heading p"],
-  ["Portfolio heading","#portfolio .section-heading h2"],["About heading","#about .about-text h2"],
-  ["About paragraph","#about .about-text p"],["Contact heading","#contact h2"],["Contact description","#contact p"]
- ];
- function load(){try{return JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){return {}}}
- function apply(){
-   const data=load();
-   Object.keys(data).forEach(sel=>{const el=document.querySelector(sel);if(el)el.innerHTML=data[sel]});
- }
- function build(){
-   const wrap=document.createElement("div");wrap.className="owner-editor";wrap.id="ownerEditor";
-   wrap.innerHTML='<div class="owner-editor-head"><div><b>⚙️ Jalali Site Editor</b><small>Edit this website on your phone</small></div><button id="editorClose">×</button></div><div class="owner-editor-body"><p class="editor-note">Tap a field, change the text, then Save. Changes are stored on this device.</p><div id="editorFields"></div><div class="editor-actions"><button id="editorSave">Save changes</button><button id="editorReset" class="secondary">Reset</button><button id="editorExport" class="secondary">Export</button><label class="editor-import">Import<input id="editorImport" type="file" accept="application/json"></label></div><p id="editorStatus"></p></div>';
-   document.body.appendChild(wrap);
-   const fields=wrap.querySelector("#editorFields");
-   editable.forEach(([label,sel])=>{const el=document.querySelector(sel);if(!el)return;const row=document.createElement("label");row.className="editor-field";const span=document.createElement("span");span.textContent=label;const ta=document.createElement("textarea");ta.dataset.selector=sel;ta.value=el.innerHTML.trim().replace(/\s+/g," ");row.append(span,ta);fields.appendChild(row)});
-   wrap.querySelector("#editorClose").onclick=()=>wrap.classList.remove("open");
-   wrap.querySelector("#editorSave").onclick=()=>{const data=load();wrap.querySelectorAll("textarea").forEach(t=>{data[t.dataset.selector]=t.value;const el=document.querySelector(t.dataset.selector);if(el)el.innerHTML=t.value});localStorage.setItem(KEY,JSON.stringify(data));status("Saved on this device ✓")};
-   wrap.querySelector("#editorReset").onclick=()=>{if(confirm("Reset your saved edits on this device?")){localStorage.removeItem(KEY);location.reload()}};
-   wrap.querySelector("#editorExport").onclick=()=>{const blob=new Blob([JSON.stringify(load(),null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="jalali-tech-edits.json";a.click();URL.revokeObjectURL(a.href)};
-   wrap.querySelector("#editorImport").onchange=e=>{const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{localStorage.setItem(KEY,JSON.stringify(JSON.parse(r.result)));location.reload()}catch(x){status("That file is not valid.")}};r.readAsText(file)};
-   function status(t){wrap.querySelector("#editorStatus").textContent=t}
- }
- function button(){const b=document.createElement("button");b.className="owner-editor-button";b.textContent="✏️ Edit Site";b.onclick=()=>document.getElementById("ownerEditor").classList.add("open");document.body.appendChild(b)}
- document.addEventListener("DOMContentLoaded",()=>{apply();build();button()});
+const SB=window.supabase.createClient("https://khzqerdrhzdrkhdxfaxn.supabase.co","sb_publishable_0LIpUqxt0wjVxlmjOswCkQ_EHk3ZmDq");
+const fields=[
+["Home","Hero title",".hero-content h1","home","hero_title"],["Home","Hero subtitle",".hero-content h2","home","hero_subtitle"],
+["Services","Heading","#services .section-heading h2","services","heading"],["Pricing","Heading","#pricing .section-heading h2","pricing","heading"],
+["Contact","Heading","#contact h2","contact","heading"]
+];
+async function apply(){const {data}=await SB.from("site_content").select("*");(data||[]).forEach(r=>{const f=fields.find(x=>x[3]===r.section&&x[4]===r.content_key);if(f){const e=document.querySelector(f[2]);if(e)e.textContent=r.content_value}})}
+function shell(){const d=document.createElement("div");d.innerHTML='<button class="cms-launch" id="cmsLaunch">⚙ Admin</button><div class="cms-overlay" id="cms"><div class="cms-card"><header><div><b>Jalali Tech</b><small>Website Admin</small></div><button id="cmsX">×</button></header><div id="cmsBody"></div></div></div>';document.body.append(...d.children);document.getElementById("cmsLaunch").onclick=login;document.getElementById("cmsX").onclick=()=>document.getElementById("cms").classList.remove("open")}
+async function login(){document.getElementById("cms").classList.add("open");const {data:{session}}=await SB.auth.getSession();session?dashboard():loginView()}
+function loginView(){const b=document.getElementById("cmsBody");b.innerHTML='<div class="cms-login"><h2>Admin Login</h2><p>Sign in to manage your live website.</p><input id="cmsEmail" type="email" placeholder="Email"><input id="cmsPass" type="password" placeholder="Password"><button id="cmsLogin">Sign in</button><small id="cmsMsg">Use the admin account you create in Supabase Authentication.</small></div>';document.getElementById("cmsLogin").onclick=async()=>{const {error}=await SB.auth.signInWithPassword({email:cmsEmail.value,password:cmsPass.value});cmsMsg.textContent=error?error.message:"Signed in";if(!error)dashboard()}}
+async function dashboard(){const {data}=await SB.from("site_content").select("*");const b=document.getElementById("cmsBody");b.innerHTML='<div class="cms-dashboard"><nav><b>Dashboard</b><span>Home</span><span>Services</span><span>Pricing</span><span>Contact</span><span>AI Assistant</span><span>Settings</span></nav><main><div class="cms-title"><div><h2>Website Content</h2><p>Edit your website and publish changes for everyone.</p></div><button id="cmsLogout">Log out</button></div><div id="cmsFields" class="cms-grid"></div><button id="cmsPublish" class="cms-publish">Publish changes</button><p id="cmsStatus"></p></main></div>';const g=document.getElementById("cmsFields");fields.forEach(f=>{const r=(data||[]).find(x=>x.section===f[3]&&x.content_key===f[4]);const c=document.createElement("label");c.className="cms-field";c.innerHTML='<span>'+f[0]+' · '+f[1]+'</span><textarea></textarea>';c.querySelector("textarea").value=r?.content_value||document.querySelector(f[2])?.textContent.trim()||"";c.querySelector("textarea").dataset.section=f[3];c.querySelector("textarea").dataset.key=f[4];g.appendChild(c)});cmsLogout.onclick=async()=>{await SB.auth.signOut();loginView()};cmsPublish.onclick=publish}
+async function publish(){const rows=[...document.querySelectorAll(".cms-field textarea")].map(x=>({section:x.dataset.section,content_key:x.dataset.key,content_value:x.value,updated_at:new Date().toISOString()}));const {error}=await SB.from("site_content").upsert(rows,{onConflict:"section,content_key"});cmsStatus.textContent=error?error.message:"Published successfully ✓";if(!error)apply()}
+document.addEventListener("DOMContentLoaded",()=>{apply();shell()});
 })();
