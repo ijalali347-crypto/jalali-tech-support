@@ -12,7 +12,7 @@
     content="Jalali Tech Support provides websites, e-commerce, mobile apps, AI solutions and custom software worldwide."
   >
 
-  <link rel="stylesheet" href="style.css?v=20260925-hero-fix3">
+  <link rel="stylesheet" href="style.css?v=20260925-static-hero4">
 </head>
 
 <body>
@@ -1637,8 +1637,13 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="site-editor.js"></script>
-  <script src="script.js?v=20260925-hero-fix3"></script>
 
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+ const b=document.querySelector(".menu-toggle"),n=document.querySelector(".nav-links");
+ if(b&&n){b.addEventListener("click",function(){n.classList.toggle("open");b.setAttribute("aria-expanded",n.classList.contains("open"));});}
+});
+</script>
 </body>
 
 </html>
