@@ -1,7 +1,7 @@
 (()=>{
 const SB=window.supabase.createClient("https://khzqerdrhzdrkhdxfaxn.supabase.co","sb_publishable_0LIpUqxt0wjVxlmjOswCkQ_EHk3ZmDq");
 const fields=[
-["Home","Hero title",".hero-content h1","home","hero_title"],["Home","Hero subtitle",".hero-content h2","home","hero_subtitle"],
+["Home","Hero subtitle",".hero-content h2","home","hero_subtitle"],
 ["Services","Heading","#services .section-heading h2","services","heading"],["Pricing","Heading","#pricing .section-heading h2","pricing","heading"],
 ["Contact","Heading","#contact h2","contact","heading"]
 ];
