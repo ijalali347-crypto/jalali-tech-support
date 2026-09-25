@@ -2845,3 +2845,59 @@ body{background:#f7f3e9}
  .smoke-letter{font-size:clamp(2.45rem,10.8vw,4.2rem)!important;-webkit-text-stroke:1px #fff!important;text-shadow:1px 1px 0 #fff,2px 2px 0 #d995f4,3px 4px 0 #7fcce9,0 5px 8px rgba(174,111,206,.13)!important}
  .chrome-line.second .smoke-letter{font-size:clamp(1.95rem,8.7vw,3.4rem)!important}
 }
+
+
+/* ===== HERO V5 — DEDICATED REFERENCE LETTERS, ISOLATED FROM OLD RULES ===== */
+.hero-content .candy-title{
+ display:flex!important;flex-direction:column!important;align-items:center!important;
+ gap:16px!important;margin:34px auto 28px!important;padding:0!important;
+ line-height:1!important;letter-spacing:0!important;
+ filter:none!important;transform:none!important;
+}
+.hero-content .candy-row{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ gap:3px!important;white-space:nowrap!important;
+ background:none!important;-webkit-text-fill-color:initial!important;
+}
+.hero-content .candy-space{display:block!important;width:clamp(20px,3vw,48px)!important}
+.hero-content .candy-letter{
+ display:inline-block!important;
+ font-family:"Arial Rounded MT Bold","Trebuchet MS",sans-serif!important;
+ font-size:clamp(3.7rem,7.8vw,8rem)!important;
+ font-weight:900!important;font-style:normal!important;
+ line-height:.82!important;letter-spacing:-.07em!important;
+ color:transparent!important;-webkit-text-fill-color:transparent!important;
+ background:linear-gradient(160deg,
+   #ff69b4 0%,#ff69b4 29%,
+   #bd62ee 30%,#bd62ee 61%,
+   #35c6ef 62%,#35c6ef 100%)!important;
+ background-size:100% 100%!important;
+ -webkit-background-clip:text!important;background-clip:text!important;
+ -webkit-text-stroke:2px #fff!important;
+ text-shadow:
+  1px 1px 0 #fff,
+  3px 3px 0 #e2a0f7,
+  5px 5px 0 #70d5f1,
+  7px 8px 8px rgba(174,96,211,.18)!important;
+ filter:none!important;transform:none!important;opacity:1!important;
+ animation:none!important;
+}
+.hero-content .candy-letter:nth-of-type(2n){
+ background:linear-gradient(150deg,#39c8ef 0%,#39c8ef 31%,#c164ee 32%,#c164ee 63%,#ff70b8 64%,#ff70b8 100%)!important;
+ -webkit-background-clip:text!important;background-clip:text!important;
+}
+.hero-content .candy-letter:nth-of-type(3n){
+ background:linear-gradient(170deg,#ff70b8 0%,#ff70b8 30%,#3bc9ef 31%,#3bc9ef 61%,#bf63ee 62%,#bf63ee 100%)!important;
+ -webkit-background-clip:text!important;background-clip:text!important;
+}
+@media(max-width:800px){
+ .hero-content .candy-title{gap:15px!important;margin-top:32px!important}
+ .hero-content .candy-row{gap:1px!important}
+ .hero-content .candy-space{width:16px!important}
+ .hero-content .candy-letter{
+   font-size:clamp(2.65rem,11.3vw,4.4rem)!important;
+   -webkit-text-stroke:1.3px #fff!important;
+   text-shadow:1px 1px 0 #fff,2px 2px 0 #e2a0f7,4px 4px 0 #70d5f1,0 6px 8px rgba(174,96,211,.16)!important;
+ }
+ .hero-content .candy-row-two .candy-letter{font-size:clamp(2.05rem,8.7vw,3.5rem)!important}
+}
