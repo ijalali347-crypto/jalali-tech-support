@@ -2452,3 +2452,100 @@ body{background:#f7f3e9}
  .section .container::before{width:110px;height:110px;right:-65px}
  .service-card,.price-card,.project,.step,.why-grid>div{backdrop-filter:none;-webkit-backdrop-filter:none}
 }
+
+
+/* ===== 2026 PREMIUM LIGHT REDESIGN ===== */
+/* Softer first impression: pearl/ice background, editorial typography, restrained glass */
+.hero{
+ background:
+   radial-gradient(circle at 82% 15%,rgba(130,183,255,.30),transparent 30%),
+   radial-gradient(circle at 15% 78%,rgba(123,231,211,.22),transparent 27%),
+   linear-gradient(135deg,#fbfdff 0%,#eef6ff 48%,#fff9ef 100%)!important;
+ color:#10243e!important;
+}
+.hero::before{
+ background:
+   radial-gradient(circle at 76% 20%,rgba(80,140,255,.15),transparent 28%),
+   radial-gradient(circle at 18% 70%,rgba(62,207,187,.13),transparent 26%),
+   linear-gradient(135deg,#fbfdff,#edf6ff 55%,#fffaf1)!important;
+}
+.hero::after{color:rgba(31,91,166,.035)!important}
+.hero-content .eyebrow{color:#286bc4!important}
+.hero-content h1{color:#10243e!important;text-shadow:none!important}
+.hero-content h2{color:#38516d!important}
+.hero-content p{color:#5d7187!important}
+.technology-card,.hero-dashboard{
+ background:rgba(255,255,255,.72)!important;
+ border-color:rgba(82,125,180,.18)!important;
+ box-shadow:0 28px 80px rgba(49,87,132,.14)!important;
+ backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)
+}
+
+/* Hero letters: each CHARACTER contains several colours, not just one flat colour */
+.hero-content h1 .fancy-word>span{
+ color:transparent!important;
+ -webkit-text-fill-color:transparent!important;
+ background-image:linear-gradient(110deg,#165dff 0%,#7b4dff 28%,#ef4770 54%,#ff9a3c 76%,#13bca4 100%)!important;
+ background-size:220% 100%!important;
+ -webkit-background-clip:text!important;background-clip:text!important;
+ filter:saturate(.92);
+}
+.hero-content h1 .fancy-word:nth-child(2)>span{
+ background-image:linear-gradient(105deg,#ef4770,#ff9d35 30%,#7057ff 62%,#168eea 82%,#15b89f)!important
+}
+.hero-content h1 .fancy-word:nth-child(3)>span{
+ background-image:linear-gradient(105deg,#13a88f,#1c8cff 30%,#7655f6 58%,#ed4775 80%,#ff9c3d)!important
+}
+.hero-content h1 .fancy-word:nth-child(4)>span{
+ background-image:linear-gradient(105deg,#ff9c38,#ef4772 27%,#7954f4 55%,#198ce5 78%,#14b99f)!important
+}
+
+/* remove the previous busy 'theme per section'; replace with one coherent premium system */
+#services,#portfolio,#process,#about{
+ background:
+  radial-gradient(circle at 92% 12%,rgba(78,142,231,.08),transparent 25%),
+  radial-gradient(circle at 8% 88%,rgba(56,195,174,.06),transparent 23%),
+  linear-gradient(180deg,#fff,#f8fbff)!important;
+}
+#pricing{
+ background:linear-gradient(145deg,#f3f7fc,#fff 48%,#f8f3ff)!important;
+ color:#142a43!important;
+}
+#quote{
+ background:linear-gradient(140deg,#f5f9ff,#fff 52%,#f7f2ff)!important;
+ color:#142a43!important;
+}
+#quote .quote-info,#quote .quote-info h2,#quote .quote-info p,#quote .quote-info span{color:#142a43!important}
+#services::before,#pricing::before,#portfolio::before,#process::before,#about::before{display:none!important}
+.section::after{
+ opacity:.12!important;
+ background-image:radial-gradient(circle,rgba(35,92,160,.28) 1px,transparent 1px)!important;
+ background-size:28px 28px!important;
+ mask-image:linear-gradient(to bottom,transparent,#000 28%,#000 72%,transparent)!important
+}
+.section .container::before{display:none!important}
+
+/* elegant section separators */
+.section:not(.hero){border-top:1px solid rgba(34,80,130,.07)}
+.section-heading>span,.section-label,.quote-info>span{color:#3372c3!important}
+.section-heading h2,.about-text h2,.quote-info h2{color:#132b46!important}
+
+/* premium cards */
+.service-card,.price-card,.step,.why-grid>div,.quote-form{
+ background:rgba(255,255,255,.88)!important;
+ border:1px solid rgba(52,94,145,.12)!important;
+ border-radius:22px!important;
+ box-shadow:0 14px 45px rgba(37,72,112,.07)!important;
+}
+.service-card:hover,.price-card:hover,.step:hover,.why-grid>div:hover{
+ transform:translateY(-5px)!important;
+ border-color:rgba(51,114,195,.24)!important;
+ box-shadow:0 22px 55px rgba(37,72,112,.12)!important
+}
+@media(max-width:800px){
+ .hero-content h1{font-size:clamp(3rem,14.3vw,4.8rem)!important;line-height:.88!important}
+ .hero-content h1 .fancy-word>span{color:transparent!important;-webkit-text-fill-color:transparent!important}
+ .hero-content h2{color:#38516d!important}
+ .hero-content p{color:#5d7187!important}
+ .technology-card,.hero-dashboard{backdrop-filter:none;-webkit-backdrop-filter:none}
+}
