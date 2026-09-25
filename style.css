@@ -2213,3 +2213,100 @@ body { background:var(--cream); color:var(--ink); }
 
 /* PROFESSIONAL CMS */
 .cms-launch{position:fixed;left:18px;bottom:18px;z-index:10000;border:0;border-radius:12px;padding:11px 16px;background:#102b4e;color:white;font-weight:800;box-shadow:0 8px 30px #0003}.cms-overlay{display:none;position:fixed;inset:0;z-index:20000;background:#071525cc;padding:12px;overflow:auto}.cms-overlay.open{display:block}.cms-card{max-width:1000px;margin:auto;background:#f7f9fc;min-height:90vh;border-radius:18px;overflow:hidden}.cms-card>header{display:flex;justify-content:space-between;align-items:center;background:#102b4e;color:white;padding:16px 20px}.cms-card header div{display:grid}.cms-card header small{opacity:.7}.cms-card header button{border:0;background:transparent;color:white;font-size:28px}.cms-login{max-width:380px;margin:70px auto;padding:25px;background:white;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 12px 35px #17304f12}.cms-login input{width:100%;box-sizing:border-box;margin:7px 0;padding:13px;border:1px solid #ccd6e2;border-radius:9px}.cms-login button,.cms-publish{width:100%;margin-top:10px;padding:13px;border:0;border-radius:9px;background:#155eef;color:white;font-weight:800}.cms-login small{display:block;margin-top:12px;color:#64748b}.cms-dashboard{display:grid;grid-template-columns:190px 1fr;min-height:78vh}.cms-dashboard nav{display:flex;flex-direction:column;gap:7px;padding:22px 14px;background:white;border-right:1px solid #e6ebf2}.cms-dashboard nav span{padding:10px;border-radius:8px}.cms-dashboard main{padding:24px}.cms-title{display:flex;justify-content:space-between;gap:12px;align-items:start}.cms-title h2{margin:0}.cms-title p{margin-top:4px;color:#64748b}.cms-title button{border:1px solid #d4dce6;background:white;border-radius:8px;padding:8px}.cms-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.cms-field{display:grid;gap:6px;padding:14px;background:white;border:1px solid #e2e8f0;border-radius:12px}.cms-field span{font-size:12px;font-weight:800}.cms-field textarea{min-height:90px;border:1px solid #d8e0ea;border-radius:8px;padding:10px;font:inherit;resize:vertical}.cms-publish{max-width:220px;margin-top:18px}#cmsStatus{font-weight:800;color:#16834a}@media(max-width:700px){.cms-dashboard{grid-template-columns:1fr}.cms-dashboard nav{flex-direction:row;overflow:auto;border-right:0;border-bottom:1px solid #e6ebf2}.cms-dashboard nav span{white-space:nowrap}.cms-grid{grid-template-columns:1fr}.cms-dashboard main{padding:15px}.cms-card{min-height:96vh}}
+
+
+/* ===== JALALI TECH — CINEMATIC SCROLL TYPOGRAPHY ===== */
+html{scroll-behavior:smooth}
+body{overflow-x:hidden}
+.hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-height:100vh;
+  background:transparent!important;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 78% 25%,rgba(42,112,255,.18),transparent 32%),
+    radial-gradient(circle at 18% 70%,rgba(0,210,190,.12),transparent 30%),
+    linear-gradient(135deg,#071426 0%,#0c2340 50%,#071426 100%);
+  background-attachment:fixed;
+}
+.hero::after{
+  content:"JALALI";
+  position:absolute;
+  z-index:-1;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  font-size:clamp(8rem,25vw,25rem);
+  font-weight:900;
+  letter-spacing:-.08em;
+  color:rgba(255,255,255,.025);
+  pointer-events:none;
+}
+.hero-content h1{
+  font-size:clamp(3.6rem,8vw,8.5rem)!important;
+  line-height:.82!important;
+  letter-spacing:-.065em!important;
+  font-weight:900!important;
+  text-transform:uppercase;
+  perspective:800px;
+}
+.hero-content h1 span{
+  display:block;
+  margin-top:.12em;
+  font-weight:300!important;
+  font-style:italic;
+  letter-spacing:-.045em!important;
+  background:linear-gradient(90deg,#fff 0%,#8fb9ff 45%,#55e4cf 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent!important;
+}
+.section-heading h2,.about-text h2,.quote-info h2{
+  font-size:clamp(2.6rem,5vw,5.8rem)!important;
+  line-height:.95!important;
+  letter-spacing:-.055em!important;
+  text-wrap:balance;
+}
+.section-heading>span,.section-label,.quote-info>span{
+  letter-spacing:.28em!important;
+  font-weight:800!important;
+}
+.scroll-fancy{
+  opacity:0;
+  transform:translate3d(0,70px,0) rotateX(12deg) scale(.96);
+  filter:blur(7px);
+  transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform 1.1s cubic-bezier(.2,.8,.2,1),filter .9s ease;
+  transform-origin:center bottom;
+  will-change:transform,opacity,filter;
+}
+.scroll-fancy.fancy-visible{
+  opacity:1;
+  transform:translate3d(0,0,0) rotateX(0) scale(1);
+  filter:blur(0);
+}
+.fancy-word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.fancy-word>span{
+  display:inline-block;
+  transform:translateY(115%) rotate(4deg);
+  opacity:0;
+  transition:transform .8s cubic-bezier(.16,1,.3,1),opacity .55s ease;
+}
+.fancy-visible .fancy-word>span{transform:translateY(0) rotate(0);opacity:1}
+.fancy-visible .fancy-word:nth-child(2)>span{transition-delay:.07s}
+.fancy-visible .fancy-word:nth-child(3)>span{transition-delay:.14s}
+.fancy-visible .fancy-word:nth-child(4)>span{transition-delay:.21s}
+@media(max-width:800px){
+  .hero::before{background-attachment:scroll}
+  .hero-content h1{font-size:clamp(3.1rem,16vw,5.6rem)!important}
+  .section-heading h2,.about-text h2,.quote-info h2{font-size:clamp(2.3rem,11vw,4rem)!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .scroll-fancy,.fancy-word>span{transition:none!important;transform:none!important;filter:none!important;opacity:1!important}
+}
