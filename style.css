@@ -2712,3 +2712,65 @@ body{background:#f7f3e9}
  .whatsapp-floating-button .wa-label{display:none!important}
  .wa-icon{width:40px!important;height:40px!important}
 }
+
+
+/* ===== HERO V3: GLOSSY 3-COLOR CANDY LETTERS ===== */
+.chrome-title{
+ gap:12px!important;
+ filter:drop-shadow(0 14px 20px rgba(0,0,0,.28))!important;
+ transform:rotate(-1deg)!important;
+}
+.chrome-line{gap:.015em!important}
+.chrome-line.second{margin-top:8px!important}
+.smoke-letter{
+ font-family:"Arial Rounded MT Bold","Trebuchet MS","Arial Black",sans-serif!important;
+ font-style:italic!important;
+ font-weight:900!important;
+ letter-spacing:-.07em!important;
+ color:transparent!important;
+ -webkit-text-fill-color:transparent!important;
+ -webkit-background-clip:text!important;
+ background-clip:text!important;
+ background-image:
+   linear-gradient(168deg,
+    #ff68b7 0%,#ff68b7 27%,
+    #b94dff 28%,#b94dff 58%,
+    #27c9f3 59%,#27c9f3 100%)!important;
+ background-size:100% 100%!important;
+ -webkit-text-stroke:2px rgba(255,255,255,.95)!important;
+ paint-order:stroke fill!important;
+ text-shadow:
+   1px 1px 0 #fff,
+   3px 3px 0 #66d6f5,
+   5px 5px 0 #9d45ef,
+   7px 8px 10px rgba(255,60,180,.25),
+   0 0 16px rgba(79,211,255,.24)!important;
+ filter:saturate(1.15)!important;
+ animation:candyFloat 4.5s ease-in-out infinite alternate!important;
+}
+.smoke-letter:nth-child(2n){
+ background-image:linear-gradient(155deg,#29caf3 0%,#29caf3 30%,#c34cff 31%,#c34cff 62%,#ff6ab8 63%,#ff6ab8 100%)!important;
+}
+.smoke-letter:nth-child(3n){
+ background-image:linear-gradient(175deg,#ff6ab8 0%,#ff6ab8 31%,#28c9f3 32%,#28c9f3 62%,#bd4df6 63%,#bd4df6 100%)!important;
+}
+.smoke-letter::after{content:none!important}
+@keyframes candyFloat{
+ 0%{transform:translateY(0) rotate(-.4deg)}
+ 100%{transform:translateY(-3px) rotate(.4deg)}
+}
+/* glossy highlight crossing the whole title */
+.chrome-title::after{
+ content:"";position:absolute;left:12%;right:12%;top:17%;height:18%;
+ border-radius:50%;pointer-events:none;opacity:.26;
+ background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,0));
+ filter:blur(7px);
+}
+.chrome-title{position:relative!important}
+@media(max-width:800px){
+ .chrome-title{gap:9px!important;transform:rotate(-.5deg)!important}
+ .smoke-letter{
+   -webkit-text-stroke:1.25px rgba(255,255,255,.98)!important;
+   text-shadow:1px 1px 0 #fff,2px 2px 0 #63d5f4,3px 4px 0 #9946e6,0 6px 9px rgba(0,0,0,.28)!important;
+ }
+}
