@@ -2310,3 +2310,37 @@ body{overflow-x:hidden}
 @media(prefers-reduced-motion:reduce){
   .scroll-fancy,.fancy-word>span{transition:none!important;transform:none!important;filter:none!important;opacity:1!important}
 }
+
+
+/* ===== MOBILE VISIBILITY HOTFIX ===== */
+@media(max-width:800px){
+  .hero-content h1{
+    font-size:clamp(2.85rem,13.5vw,4.6rem)!important;
+    line-height:.9!important;
+    letter-spacing:-.045em!important;
+    color:#fff!important;
+  }
+  .hero-content h1 .fancy-word>span{color:#fff!important}
+  .hero-content h1 span,
+  .hero-content h1 span .fancy-word>span{
+    color:#9fc4ff!important;
+    -webkit-text-fill-color:currentColor!important;
+    background:none!important;
+  }
+  .hero-content h2{color:#d9e8fb!important;opacity:1!important}
+  .hero-content p{color:#d3e0ee!important;opacity:1!important}
+  .scroll-fancy{filter:none}
+  .services-grid .service-card,
+  .price-card{
+    min-height:0!important;
+    height:auto!important;
+    padding:28px 24px!important;
+  }
+  .service-card strong,
+  .service-card a,
+  .price-card .price,
+  .price-card li{
+    opacity:1!important;
+    visibility:visible!important;
+  }
+}
