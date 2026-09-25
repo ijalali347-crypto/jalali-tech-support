@@ -2549,3 +2549,60 @@ body{background:#f7f3e9}
  .hero-content p{color:#5d7187!important}
  .technology-card,.hero-dashboard{backdrop-filter:none;-webkit-backdrop-filter:none}
 }
+
+
+/* ===== CHROME + COLOURED SMOKE HERO — CODE ONLY ===== */
+.hero .hero-grid{grid-template-columns:1fr!important;max-width:1240px;text-align:center}
+.hero .hero-content{max-width:1180px!important;margin:auto}
+.hero .technology-card{display:none!important}
+.hero{min-height:100vh!important;display:flex;align-items:center;background:
+ radial-gradient(circle at 50% 38%,rgba(255,255,255,.98),rgba(231,238,246,.92) 43%,rgba(197,207,219,.88) 72%,rgba(31,39,49,.92) 140%)!important}
+.hero::before{background:
+ linear-gradient(115deg,rgba(255,184,87,.12),transparent 28%),
+ linear-gradient(245deg,rgba(89,154,255,.12),transparent 28%),
+ radial-gradient(circle at 50% 38%,#fff 0,#edf2f7 45%,#cbd4de 100%)!important}
+.hero-content .eyebrow{letter-spacing:.34em!important;font-size:.78rem!important;color:#28405e!important;margin-bottom:24px}
+.chrome-title{display:flex!important;flex-direction:column;align-items:center;gap:4px;margin:0 auto 24px!important;line-height:.78!important;letter-spacing:0!important;text-transform:uppercase;filter:drop-shadow(0 18px 13px rgba(10,20,34,.22))}
+.chrome-line{display:flex!important;align-items:center;justify-content:center;white-space:nowrap;background:none!important;-webkit-text-fill-color:initial!important}
+.chrome-line.second{margin-top:10px}
+.word-gap{display:inline-block!important;width:.27em!important;background:none!important}
+.smoke-letter{
+ position:relative;display:inline-block!important;
+ font-family:Georgia,"Times New Roman",serif!important;
+ font-size:clamp(3.5rem,7.2vw,7.6rem)!important;
+ font-weight:900!important;line-height:.82!important;
+ letter-spacing:-.09em!important;
+ color:transparent!important;-webkit-text-fill-color:transparent!important;
+ -webkit-background-clip:text!important;background-clip:text!important;
+ -webkit-text-stroke:2px #dfe6ed;
+ text-shadow:
+   1px 1px 0 #fff,
+   3px 3px 0 #6d7783,
+   5px 5px 0 #303945,
+   8px 10px 10px rgba(5,13,24,.32);
+ filter:saturate(1.2) contrast(1.08);
+ animation:smokeShift 7s ease-in-out infinite alternate;
+ background-size:260% 260%!important;
+}
+.l1,.l8,.l15,.l22{background-image:radial-gradient(circle at 25% 25%,#ffe43b,transparent 24%),radial-gradient(circle at 70% 65%,#19db72,transparent 30%),linear-gradient(145deg,#ff302e,#ffb526 38%,#18c86c 70%,#0697ff)!important}
+.l2,.l9,.l16{background-image:radial-gradient(circle at 70% 25%,#17e7ff,transparent 25%),linear-gradient(145deg,#126cff,#03c8e8 40%,#7b39ff 72%,#ff36a8)!important}
+.l3,.l10,.l17{background-image:radial-gradient(circle at 25% 70%,#ffea3a,transparent 25%),linear-gradient(145deg,#ff263c,#ff772c 38%,#ffd52e 68%,#16d879)!important}
+.l4,.l11,.l18{background-image:radial-gradient(circle at 65% 28%,#ff49d8,transparent 25%),linear-gradient(145deg,#722cff,#df2eff 42%,#ff3f80 70%,#0cbdf0)!important}
+.l5,.l12,.l19{background-image:radial-gradient(circle at 30% 25%,#18f2b1,transparent 23%),linear-gradient(145deg,#06a76f,#43e449 38%,#ffe531 67%,#ff762c)!important}
+.l6,.l13,.l20{background-image:radial-gradient(circle at 65% 65%,#ff3d8f,transparent 24%),linear-gradient(145deg,#6e27ff,#264dff 35%,#00c7ff 64%,#ff32a5)!important}
+.l7,.l14,.l21{background-image:radial-gradient(circle at 30% 30%,#fff33c,transparent 24%),linear-gradient(145deg,#ff332f,#ff8b1f 38%,#ffe331 64%,#2bd45c)!important}
+@keyframes smokeShift{0%{background-position:0% 30%}100%{background-position:100% 70%}}
+.hero-content h2{font-size:clamp(.95rem,1.55vw,1.3rem)!important;letter-spacing:.08em!important;color:#31455d!important;margin-top:22px!important}
+.hero-content p{max-width:650px;margin:14px auto 24px!important;color:#5a6c80!important}
+.hero-buttons{justify-content:center!important}
+.offer-box{max-width:620px;margin:26px auto 0!important;text-align:left}
+@media(max-width:800px){
+ .hero{padding-top:110px!important;min-height:auto!important}
+ .chrome-title{width:100%;gap:8px}
+ .chrome-line{width:100%;white-space:nowrap}
+ .smoke-letter{font-size:clamp(2.05rem,9.8vw,3.9rem)!important;-webkit-text-stroke:1px #e5ebf1;text-shadow:1px 1px 0 #fff,2px 2px 0 #697480,4px 5px 6px rgba(6,16,28,.28)}
+ .chrome-line.second .smoke-letter{font-size:clamp(1.72rem,7.9vw,3.1rem)!important}
+ .word-gap{width:.2em!important}
+ .hero-content h2{font-size:.9rem!important;line-height:1.65!important}
+}
+@media(prefers-reduced-motion:reduce){.smoke-letter{animation:none!important}}
