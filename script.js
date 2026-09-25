@@ -173,28 +173,11 @@ if(quickButtons&&!quickButtons.querySelector('[data-question="demo"]')){
 }
 
 
-/* CINEMATIC SCROLL TYPOGRAPHY */
+/* SCROLL TYPOGRAPHY — section headings only.
+   Hero chrome letters are authored in HTML and must not be rewritten by JavaScript. */
 (function(){
-  const targets=document.querySelectorAll(".section-heading h2,.about-text h2,.quote-info h2,.hero-content h1");
-  targets.forEach(el=>{
-    el.classList.add("scroll-fancy");
-    if(!el.querySelector(".fancy-word")){
-      const nodes=[...el.childNodes];
-      nodes.forEach(node=>{
-        if(node.nodeType===3&&node.textContent.trim()){
-          const frag=document.createDocumentFragment();
-          node.textContent.split(/(\s+)/).forEach(part=>{
-            if(/^\s+$/.test(part)){frag.appendChild(document.createTextNode(part));return;}
-            if(!part)return;
-            const outer=document.createElement("span");outer.className="fancy-word";
-            const inner=document.createElement("span");inner.textContent=part;
-            outer.appendChild(inner);frag.appendChild(outer);
-          });
-          node.replaceWith(frag);
-        }
-      });
-    }
-  });
+  const targets=document.querySelectorAll(".section-heading h2,.about-text h2,.quote-info h2");
+  targets.forEach(el=>el.classList.add("scroll-fancy"));
   if("IntersectionObserver" in window){
     const io=new IntersectionObserver(entries=>entries.forEach(entry=>{
       if(entry.isIntersecting){entry.target.classList.add("fancy-visible");io.unobserve(entry.target);}
