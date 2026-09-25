@@ -2774,3 +2774,74 @@ body{background:#f7f3e9}
    text-shadow:1px 1px 0 #fff,2px 2px 0 #63d5f4,3px 4px 0 #9946e6,0 6px 9px rgba(0,0,0,.28)!important;
  }
 }
+
+
+/* ===== HERO V4 — SOFT ROUNDED PASTEL 3D (REFERENCE MATCH) ===== */
+.hero{
+ background:#f8f7fb!important;
+}
+.hero::before{
+ background:
+ radial-gradient(circle at 18% 24%,rgba(255,171,221,.16),transparent 28%),
+ radial-gradient(circle at 82% 24%,rgba(124,213,255,.17),transparent 28%),
+ linear-gradient(180deg,#fff 0%,#fbf9ff 55%,#f6fbff 100%)!important;
+ animation:none!important;
+}
+.hero::after{
+ opacity:.08!important;
+ background-image:radial-gradient(circle,rgba(104,95,160,.24) 1px,transparent 1px)!important;
+ background-size:28px 28px!important;
+ transform:none!important;
+ mask-image:linear-gradient(to bottom,transparent,#000 35%,transparent 90%)!important;
+}
+.hero-glow{
+ background:radial-gradient(circle,rgba(255,151,218,.13),rgba(109,211,255,.10) 38%,transparent 70%)!important;
+ filter:blur(45px)!important;animation:none!important;
+}
+.hero-content .eyebrow{color:#5d6280!important;text-shadow:none!important}
+.hero-content h2{color:#535a73!important;text-shadow:none!important}
+.hero-content p{color:#6d7287!important;text-shadow:none!important}
+
+.chrome-title{
+ transform:none!important;gap:12px!important;
+ filter:drop-shadow(0 8px 10px rgba(160,85,205,.14))!important;
+}
+.chrome-line{gap:.035em!important}
+.smoke-letter{
+ font-family:"Arial Rounded MT Bold","Trebuchet MS",sans-serif!important;
+ font-style:normal!important;font-weight:900!important;
+ font-size:clamp(3.5rem,7.2vw,7.5rem)!important;
+ letter-spacing:-.055em!important;line-height:.88!important;
+ background-image:linear-gradient(155deg,
+   #ff73bb 0%,#ff73bb 31%,
+   #c76af2 32%,#c76af2 64%,
+   #45c8ee 65%,#45c8ee 100%)!important;
+ background-size:100% 100%!important;
+ -webkit-text-stroke:1.4px rgba(255,255,255,.98)!important;
+ text-shadow:
+   1px 1px 0 #fff,
+   2px 3px 0 #d995f4,
+   4px 5px 0 #7fcce9,
+   0 7px 12px rgba(174,111,206,.16)!important;
+ filter:none!important;
+ animation:none!important;
+}
+.smoke-letter:nth-child(2n){
+ background-image:linear-gradient(160deg,#54ccef 0%,#54ccef 32%,#c96cf1 33%,#c96cf1 65%,#ff78bd 66%,#ff78bd 100%)!important;
+}
+.smoke-letter:nth-child(3n){
+ background-image:linear-gradient(150deg,#ff79bd 0%,#ff79bd 30%,#55ccef 31%,#55ccef 63%,#c66df0 64%,#c66df0 100%)!important;
+}
+.chrome-title::after{display:none!important}
+.offer-box{
+ background:rgba(255,255,255,.82)!important;
+ border:1px solid rgba(179,151,211,.22)!important;
+ box-shadow:0 14px 38px rgba(111,99,151,.09)!important;
+ backdrop-filter:blur(10px)!important;
+}
+.offer-box span{color:#76618c!important}.offer-box strong{color:#32354a!important}.offer-box small{color:#74798c!important}
+@media(max-width:800px){
+ .hero{padding-top:105px!important}
+ .smoke-letter{font-size:clamp(2.45rem,10.8vw,4.2rem)!important;-webkit-text-stroke:1px #fff!important;text-shadow:1px 1px 0 #fff,2px 2px 0 #d995f4,3px 4px 0 #7fcce9,0 5px 8px rgba(174,111,206,.13)!important}
+ .chrome-line.second .smoke-letter{font-size:clamp(1.95rem,8.7vw,3.4rem)!important}
+}
