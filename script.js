@@ -171,3 +171,34 @@ if(quickButtons&&!quickButtons.querySelector('[data-question="demo"]')){
   const b=document.createElement("button");b.type="button";b.dataset.question="demo";b.textContent="✨ Create demo";
   b.addEventListener("click",()=>startDemo("create a demo"));quickButtons.appendChild(b);
 }
+
+
+/* CINEMATIC SCROLL TYPOGRAPHY */
+(function(){
+  const targets=document.querySelectorAll(".section-heading h2,.about-text h2,.quote-info h2,.hero-content h1");
+  targets.forEach(el=>{
+    el.classList.add("scroll-fancy");
+    if(!el.querySelector(".fancy-word")){
+      const nodes=[...el.childNodes];
+      nodes.forEach(node=>{
+        if(node.nodeType===3&&node.textContent.trim()){
+          const frag=document.createDocumentFragment();
+          node.textContent.split(/(\s+)/).forEach(part=>{
+            if(/^\s+$/.test(part)){frag.appendChild(document.createTextNode(part));return;}
+            if(!part)return;
+            const outer=document.createElement("span");outer.className="fancy-word";
+            const inner=document.createElement("span");inner.textContent=part;
+            outer.appendChild(inner);frag.appendChild(outer);
+          });
+          node.replaceWith(frag);
+        }
+      });
+    }
+  });
+  if("IntersectionObserver" in window){
+    const io=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add("fancy-visible");io.unobserve(entry.target);}
+    }),{threshold:.18,rootMargin:"0px 0px -8% 0px"});
+    targets.forEach(el=>io.observe(el));
+  }else targets.forEach(el=>el.classList.add("fancy-visible"));
+})();
