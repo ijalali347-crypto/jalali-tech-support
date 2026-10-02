@@ -13,6 +13,65 @@
   >
 
   <link rel="stylesheet" href="style.css?v=20260925-candy-rebuild-v5">
+<style id="interactive-studio-styles">
+
+/* Interactive studio hero — scoped to override earlier hero experiments. */
+.header {background:rgba(253,251,247,.94)!important;border-bottom:1px solid #e6e1dd!important}
+.header .logo strong {color:#25222c!important;font-size:15px}
+.header .logo small {color:#726c7c!important;font-size:10px}
+.header .logo-icon {background:#25222c!important;box-shadow:none!important}
+.header .nav-links a {color:#554d60!important;font-size:12px}
+.header .nav-links a:hover {color:#9c3ef0!important}
+.header .menu-toggle {color:#25222c!important}
+.header .nav-links.open {background:#fdfbf7!important}
+#home.interactive-hero {background:#f8f6f1!important;min-height:min(850px,calc(100svh - 72px))!important;padding:90px 0 110px!important;position:relative;isolation:isolate;overflow:hidden!important;display:flex;align-items:center}
+#home::before,#home::after {display:none!important}
+#home .hero-grid {position:relative;z-index:2;display:block!important;width:min(1240px,90%)!important;text-align:left!important}
+#home .hero-content {width:100%;max-width:1000px;margin:0!important;text-align:left!important}
+#home .eyebrow {display:flex;align-items:center;gap:10px;color:#635a70!important;font-size:10px!important;letter-spacing:2px;line-height:1.7;margin:0 0 28px!important;text-shadow:none!important}
+.availability-dot {width:7px;height:7px;background:#7351f4;border-radius:50%;box-shadow:0 0 0 5px #7351f412;flex-shrink:0}
+#home .studio-title {max-width:none!important;color:#27212e!important;font-size:clamp(68px,8.3vw,124px)!important;font-weight:800!important;letter-spacing:-.075em!important;line-height:.98!important;margin:0 0 28px!important;filter:none!important;text-shadow:none!important}
+#home .studio-title span {display:block!important;color:#a02bca!important;background:linear-gradient(110deg,#c04486 0%,#8b3dd8 35%,#456ee1 65%,#068e9f 100%)!important;background-clip:text!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;padding:0 0 .12em!important}
+#home .hero-content h2 {color:#413647!important;font-size:17px!important;font-weight:600!important;line-height:1.6!important;letter-spacing:.02em!important;margin:0 0 14px!important;text-shadow:none!important}
+#home .hero-content > p {color:#6c6376!important;font-size:16px!important;line-height:1.8!important;max-width:450px!important;margin:0!important;text-shadow:none!important}
+#home .hero-buttons {justify-content:flex-start!important;gap:12px!important;margin-top:28px!important}
+#home .btn {min-height:54px!important;padding:0 24px!important;border-radius:50px!important;font-size:11px!important;letter-spacing:1px;gap:24px!important;box-shadow:none!important}
+#home .btn-primary {background:#29222f!important;color:#fff!important}
+#home .btn-whatsapp {background:rgba(255,255,255,.6)!important;color:#29222f!important;border:1px solid #bdb2c5!important}
+#home .btn:hover {transform:translateY(-3px)}
+#home .hero-footer-note {display:flex;align-items:center;flex-wrap:wrap;gap:18px;margin-top:28px;color:#6a6272;font-size:11px}
+#home .hero-footer-note strong {font-weight:700;color:#8b37b0}
+#home .hero-footer-note a {text-decoration:underline;text-underline-offset:4px}
+#home .hero-bottom {position:absolute;bottom:28px;left:5%;right:5%;z-index:3;display:flex;justify-content:space-between;gap:18px;align-items:center;font-size:9px;letter-spacing:1.6px;color:#72697c}
+#home .hero-bottom a {white-space:nowrap}
+#home .aurora-background {position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+#home .aurora-background i {position:absolute;width:65%;height:90%;border-radius:50%;filter:blur(65px);opacity:.32;animation:studioDrift 15s ease-in-out infinite alternate;background:radial-gradient(ellipse,#eea6d8,transparent 67%);top:-15%;right:-15%}
+#home .aurora-background i:nth-child(2) {background:radial-gradient(ellipse,#a9e9ea,transparent 66%);top:15%;right:-10%;animation-delay:-6s}
+#home .aurora-background i:nth-child(3) {background:radial-gradient(ellipse,#c9b1f4,transparent 66%);top:45%;right:25%;animation-delay:-10s;opacity:.24}
+#heroReveal {position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.78}
+#home .hero-orbit {position:absolute;z-index:0;right:-11%;top:9%;width:min(56vw,720px);aspect-ratio:1;pointer-events:none;opacity:.72;animation:studioFloat 13s ease-in-out infinite}
+#home .orbit-core {position:absolute;inset:16%;border-radius:50%;background:radial-gradient(circle at 29% 24%,#ffffffba 0%,transparent 42%),conic-gradient(from 30deg,#aabcf5,#a9e8e4,#e9efd1,#f9b7d5,#c6acf4,#aabcf5);box-shadow:inset -20px -24px 45px #8170b122,inset 10px 12px 28px #ffffff88,0 25px 70px #b5a0e62a}
+#home .orbit-ring {position:absolute;inset:0;border:1px solid #9683bf30;border-radius:50%;transform:rotate(-32deg) scaleY(.46);box-shadow:0 0 25px #ae9bcc12}
+#home .ring-two {inset:5%;transform:rotate(40deg) scaleY(.6)}
+@keyframes studioDrift {to{transform:translate(-9%,12%) scale(1.12)}}
+@keyframes studioFloat {50%{transform:translateY(18px) rotate(9deg)}}
+@media(min-width:1500px){#home.interactive-hero{min-height:850px!important}}
+@media(max-width:800px){
+ #home.interactive-hero {min-height:740px!important;padding:65px 0 100px!important}
+ #home .studio-title {font-size:clamp(54px,10.6vw,84px)!important;letter-spacing:-.07em!important;margin-bottom:24px!important}
+ #home .eyebrow {font-size:8px!important;letter-spacing:1.3px;margin-bottom:28px!important}
+ #home .hero-content h2 {font-size:14px!important}
+ #home .hero-content > p {font-size:14px!important;max-width:330px!important}
+ #home .hero-orbit {width:75vw;right:-35%;top:24%;opacity:.5}
+ #home .hero-bottom {flex-direction:column;align-items:flex-start;gap:12px;font-size:8px;letter-spacing:1px}
+ #home .btn {min-height:50px!important;padding:0 20px!important;font-size:10px!important;gap:12px!important}
+ #home .hero-footer-note {gap:10px;font-size:10px}
+ #home .aurora-background i {width:110%;height:70%;filter:blur(40px)}
+}
+@media(max-width:380px){#home .studio-title{font-size:12vw!important}#home .hero-buttons{gap:8px!important}#home .btn{padding:0 15px!important;font-size:9px!important}}
+@media(prefers-reduced-motion:reduce){#home .aurora-background i,#home .hero-orbit{animation:none!important}#home .btn{transition:none!important}}
+
+</style>
 </head>
 
 <body>
@@ -65,282 +124,24 @@
 
   <!-- ================= HERO ================= -->
 
-  <section id="home" class="hero">
-
-    <div class="hero-glow"></div>
-
-
+  <section id="home" class="hero interactive-hero">
+    <div class="aurora-background" aria-hidden="true"><i></i><i></i><i></i></div>
+    <canvas id="heroReveal" aria-hidden="true"></canvas>
+    <div class="hero-orbit" aria-hidden="true"><div class="orbit-core"></div><div class="orbit-ring"></div><div class="orbit-ring ring-two"></div></div>
     <div class="container hero-grid">
-
-
-      <!-- HERO LEFT -->
-
       <div class="hero-content">
-
-        <div class="eyebrow">
-          🌍 WORLDWIDE DIGITAL DEVELOPMENT
-        </div>
-
-
-        <h1 class="candy-title" aria-label="Build Your Digital Future">
-          <span class="candy-row">
-            <span class="candy-letter">B</span><span class="candy-letter">U</span><span class="candy-letter">I</span><span class="candy-letter">L</span><span class="candy-letter">D</span>
-            <span class="candy-space"></span>
-            <span class="candy-letter">Y</span><span class="candy-letter">O</span><span class="candy-letter">U</span><span class="candy-letter">R</span>
-          </span>
-          <span class="candy-row candy-row-two">
-            <span class="candy-letter">D</span><span class="candy-letter">I</span><span class="candy-letter">G</span><span class="candy-letter">I</span><span class="candy-letter">T</span><span class="candy-letter">A</span><span class="candy-letter">L</span>
-            <span class="candy-space"></span>
-            <span class="candy-letter">F</span><span class="candy-letter">U</span><span class="candy-letter">T</span><span class="candy-letter">U</span><span class="candy-letter">R</span><span class="candy-letter">E</span>
-          </span>
-        </h1>
-
-
-        <h2>
-          Websites • E-commerce • Mobile Apps • AI • Custom Software
-        </h2>
-
-
-        <p>
-          We help businesses and entrepreneurs worldwide turn their
-          ideas into professional digital solutions.
-        </p>
-
-
+        <div class="eyebrow"><span class="availability-dot"></span> INDEPENDENT DIGITAL STUDIO · WORLDWIDE</div>
+        <h1 class="studio-title">Build your<br><span>digital future.</span></h1>
+        <h2>Websites. Apps. E-commerce. AI.</h2>
+        <p>Bring your ideas to life with beautiful websites and digital experiences built around your business.</p>
         <div class="hero-buttons">
-
-          <a href="#quote" class="btn btn-primary">
-            GET FREE QUOTE →
-          </a>
-
-
-          <a
-            href="https://wa.me/971508751737"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-whatsapp"
-          >
-            CHAT ON WHATSAPP
-          </a>
-
+          <a href="#portfolio" class="btn btn-primary">EXPLORE OUR WORK <span aria-hidden="true">↗</span></a>
+          <a href="https://wa.me/971508751737" target="_blank" rel="noopener" class="btn btn-whatsapp">LET’S TALK <span aria-hidden="true">↗</span></a>
         </div>
-
-
-        <div class="offer-box">
-
-          <span>
-            🔥 LIMITED-TIME LAUNCH OFFER
-          </span>
-
-          <strong>
-            50% OFF SELECTED SERVICES
-          </strong>
-
-          <small>
-            Final pricing depends on project requirements.
-            Offer applies to selected services.
-          </small>
-
-        </div>
-
+        <div class="hero-footer-note"><span>Selected services <strong>50% off</strong></span><a href="#quote">Get your free quote →</a></div>
       </div>
-
-
-
-      <!-- ================= DIGITAL COMMAND CENTER ================= -->
-
-      <div class="technology-card">
-
-        <div class="hero-dashboard">
-
-
-          <div class="dashboard-top">
-
-            <div>
-
-              <span class="dashboard-label">
-                JALALI TECH
-              </span>
-
-              <h3>
-                Digital Command Center
-              </h3>
-
-            </div>
-
-
-            <div class="online-status">
-
-              <span></span>
-
-              ONLINE
-
-            </div>
-
-          </div>
-
-
-
-          <div class="dashboard-main">
-
-
-            <!-- AI -->
-
-            <div class="dashboard-ai">
-
-              <div class="ai-icon">
-                🤖
-              </div>
-
-
-              <div>
-
-                <strong>
-                  Jalali AI Assistant
-                </strong>
-
-                <p>
-                  Ready to help your business
-                </p>
-
-              </div>
-
-
-              <span class="ai-ready">
-                READY
-              </span>
-
-            </div>
-
-
-
-            <!-- SERVICES -->
-
-            <div class="dashboard-services">
-
-
-              <div class="dashboard-service">
-
-                <span>🌐</span>
-
-                <div>
-                  <strong>Website</strong>
-                  <small>Development</small>
-                </div>
-
-              </div>
-
-
-              <div class="dashboard-service">
-
-                <span>🛒</span>
-
-                <div>
-                  <strong>E-commerce</strong>
-                  <small>Online Store</small>
-                </div>
-
-              </div>
-
-
-              <div class="dashboard-service">
-
-                <span>📱</span>
-
-                <div>
-                  <strong>Mobile Apps</strong>
-                  <small>iOS & Android</small>
-                </div>
-
-              </div>
-
-
-              <div class="dashboard-service">
-
-                <span>⚙️</span>
-
-                <div>
-                  <strong>Custom Software</strong>
-                  <small>Business Systems</small>
-                </div>
-
-              </div>
-
-
-            </div>
-
-
-
-            <!-- PROJECT STATUS -->
-
-            <div class="dashboard-progress">
-
-              <div class="progress-heading">
-
-                <span>
-                  YOUR DIGITAL PROJECT
-                </span>
-
-                <strong>
-                  READY TO BUILD
-                </strong>
-
-              </div>
-
-
-              <div class="progress-bar">
-
-                <div></div>
-
-              </div>
-
-            </div>
-
-
-          </div>
-
-
-
-          <!-- DASHBOARD BOTTOM -->
-
-          <div class="dashboard-bottom">
-
-
-            <div>
-
-              <small>
-                GLOBAL SERVICE
-              </small>
-
-              <strong>
-                🌍 Worldwide
-              </strong>
-
-            </div>
-
-
-            <div>
-
-              <small>
-                LAUNCH OFFER
-              </small>
-
-              <strong>
-                50% OFF
-              </strong>
-
-            </div>
-
-
-          </div>
-
-
-        </div>
-
-      </div>
-
     </div>
-
+    <div class="hero-bottom"><span class="interaction-hint">MOVE YOUR CURSOR OR TOUCH TO EXPLORE THE COLOURS</span><a href="#services" aria-label="Explore our services">SCROLL TO EXPLORE ↓</a></div>
   </section>
 
 
@@ -1648,6 +1449,94 @@ document.addEventListener("DOMContentLoaded",function(){
  const b=document.querySelector(".menu-toggle"),n=document.querySelector(".nav-links");
  if(b&&n){b.addEventListener("click",function(){n.classList.toggle("open");b.setAttribute("aria-expanded",n.classList.contains("open"));});}
 });
+</script>
+<script id="interactive-studio-effect">
+
+(() => {
+ const hero = document.getElementById('home');
+ const canvas = document.getElementById('heroReveal');
+ if (!hero || !canvas) return;
+ const ctx = canvas.getContext('2d');
+ const art = document.createElement('canvas');
+ const mask = document.createElement('canvas');
+ const ac = art.getContext('2d'), mc = mask.getContext('2d');
+ if (!ctx || !ac || !mc) return;
+ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+ let width=0,height=0,scale=1,points=[],frame=0,last=0,start=performance.now(),visible=true,interacted=false,active=false;
+ function resize(){
+   width=hero.clientWidth;height=hero.clientHeight;scale=Math.min(window.devicePixelRatio||1,1.25);
+   [canvas,art,mask].forEach(c=>{c.width=Math.round(width*scale);c.height=Math.round(height*scale)});
+   [ctx,ac,mc].forEach(c=>c.setTransform(scale,0,0,scale,0,0));
+   points=[];start=performance.now();
+   if(reduced.matches) {paint(start);return}
+   run();
+ }
+ function point(event){
+   const rect=hero.getBoundingClientRect();
+   interacted=true;
+   const p={x:event.clientX-rect.left,y:event.clientY-rect.top,t:performance.now()};
+   const prev=points[points.length-1];
+   if(prev&&p.t-prev.t<10)return;
+   points.push(p);if(points.length>65)points.shift();
+   if(reduced.matches){points=[p];paint(p.t)}else run();
+ }
+ hero.addEventListener('pointerdown',e=>{active=true;point(e)},{passive:true});
+ hero.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'||active)point(e)},{passive:true});
+ window.addEventListener('pointerup',()=>{active=false},{passive:true});
+ window.addEventListener('pointercancel',()=>{active=false},{passive:true});
+ function paint(now){
+   const t=reduced.matches?0:(now-start)/1000;
+   ctx.clearRect(0,0,width,height);ac.clearRect(0,0,width,height);mc.clearRect(0,0,width,height);
+   // A locally generated moving colour field, revealed only along the pointer trail.
+   ac.fillStyle='#b894f1';ac.fillRect(0,0,width,height);
+   const colors=['#ff55ac','#7645f9','#31d3e5','#ffe291','#ff915c','#93ebc0'];
+   colors.forEach((color,i)=>{
+     const x=width*(.5+.42*Math.sin(t*.23+i*1.9)),y=height*(.5+.43*Math.cos(t*.27+i*1.7));
+     const r=Math.max(width,height)*.48;
+     const g=ac.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,color);g.addColorStop(1,color+'00');
+     ac.fillStyle=g;ac.fillRect(0,0,width,height);
+   });
+   // Flowing bands create depth inside each revealed patch.
+   ac.lineWidth=Math.max(25,width*.055);ac.lineCap='round';
+   for(let i=0;i<4;i++){
+     ac.strokeStyle=['#ffffff28','#7f38da42','#ffffff35','#00bfa42d'][i];
+     ac.beginPath();ac.moveTo(-50,height*(.18+i*.2));
+     ac.bezierCurveTo(width*.3,height*(.7+.25*Math.sin(t*.45+i)),width*.7,height*(.1+.2*Math.cos(t*.4+i)),width+50,height*(.22+i*.18));ac.stroke();
+   }
+   points=points.filter(p=>reduced.matches||now-p.t<1700);
+   if(!interacted&&!reduced.matches&&t<3.6){
+     points.push({x:width*(.7+.18*Math.sin(t*1.5)),y:height*(.35+.2*Math.cos(t*1.8)),t:now});
+     if(points.length>65)points.shift();
+   }
+   for(let i=0;i<points.length;i++){
+     const p=points[i],life=reduced.matches?1:Math.max(0,1-(now-p.t)/1700),r=(width<600?68:105)*(.3+.7*life);
+     mc.globalAlpha=life;
+     const g=mc.createRadialGradient(p.x,p.y,r*.55,p.x,p.y,r);
+     g.addColorStop(0,'#fff');g.addColorStop(1,'#ffffff00');mc.fillStyle=g;
+     mc.beginPath();mc.arc(p.x,p.y,r,0,Math.PI*2);mc.fill();
+     const prev=points[i-1];
+     if(prev&&Math.hypot(prev.x-p.x,prev.y-p.y)<r*2){
+       mc.lineWidth=r*1.15;mc.lineCap='round';mc.strokeStyle='#fff';mc.beginPath();mc.moveTo(prev.x,prev.y);mc.lineTo(p.x,p.y);mc.stroke();
+     }
+   }
+   mc.globalAlpha=1;
+   ac.globalCompositeOperation='destination-in';ac.drawImage(mask,0,0,width,height);ac.globalCompositeOperation='source-over';
+   ctx.drawImage(art,0,0,width,height);
+ }
+ function tick(now){
+   frame=0;if(!visible||document.hidden||reduced.matches)return;
+   if(now-last>33){paint(now);last=now}
+   if(points.length||(!interacted&&now-start<3800))frame=requestAnimationFrame(tick);
+ }
+ function run(){if(!frame&&visible&&!document.hidden&&!reduced.matches)frame=requestAnimationFrame(tick)}
+ const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)run();else{cancelAnimationFrame(frame);frame=0}},{threshold:0});
+ observer.observe(hero);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0}else run()});
+ new ResizeObserver(resize).observe(hero);
+ reduced.addEventListener('change',()=>{cancelAnimationFrame(frame);frame=0;points=[];ctx.clearRect(0,0,width,height);start=performance.now();if(!reduced.matches)run()});
+ resize();
+})();
+
 </script>
 </body>
 
