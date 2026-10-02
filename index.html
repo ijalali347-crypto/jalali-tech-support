@@ -27,7 +27,7 @@
 #home.interactive-hero {background:#f8f6f1!important;min-height:min(850px,calc(100svh - 72px))!important;padding:90px 0 110px!important;position:relative;isolation:isolate;overflow:hidden!important;display:flex;align-items:center}
 #home::before,#home::after {display:none!important}
 #home .hero-grid {position:relative;z-index:2;display:block!important;width:min(1240px,90%)!important;text-align:left!important}
-#home .hero-content {width:100%;max-width:1000px;margin:0!important;text-align:left!important}
+#home .hero-content {user-select:none;width:100%;max-width:1000px;margin:0!important;text-align:left!important}
 #home .eyebrow {display:flex;align-items:center;gap:10px;color:#635a70!important;font-size:10px!important;letter-spacing:2px;line-height:1.7;margin:0 0 28px!important;text-shadow:none!important}
 .availability-dot {width:7px;height:7px;background:#7351f4;border-radius:50%;box-shadow:0 0 0 5px #7351f412;flex-shrink:0}
 #home .studio-title {max-width:none!important;color:#27212e!important;font-size:clamp(68px,8.3vw,124px)!important;font-weight:800!important;letter-spacing:-.075em!important;line-height:.98!important;margin:0 0 28px!important;filter:none!important;text-shadow:none!important}
@@ -1489,7 +1489,7 @@ document.addEventListener("DOMContentLoaded",function(){
    ctx.clearRect(0,0,width,height);ac.clearRect(0,0,width,height);mc.clearRect(0,0,width,height);
    // A locally generated moving colour field, revealed only along the pointer trail.
    ac.fillStyle='#b894f1';ac.fillRect(0,0,width,height);
-   const colors=['#ff55ac','#7645f9','#31d3e5','#ffe291','#ff915c','#93ebc0'];
+   const colors=['#ff2d95','#7028fa','#00d5e9','#ffcf40'];
    colors.forEach((color,i)=>{
      const x=width*(.5+.42*Math.sin(t*.23+i*1.9)),y=height*(.5+.43*Math.cos(t*.27+i*1.7));
      const r=Math.max(width,height)*.48;
