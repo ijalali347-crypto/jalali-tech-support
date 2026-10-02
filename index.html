@@ -72,6 +72,21 @@
 @media(prefers-reduced-motion:reduce){#home .aurora-background i,#home .hero-orbit{animation:none!important}#home .btn{transition:none!important}}
 
 </style>
+<style id="jalali-ai-launcher-v2">
+/* Larger Jalali assistant launcher */
+#aiButton{position:fixed!important;right:20px!important;bottom:20px!important;z-index:10001!important;display:flex!important;align-items:center!important;gap:12px!important;width:auto!important;height:auto!important;min-height:76px!important;padding:12px 22px 12px 12px!important;border:1px solid #ffffff80!important;border-radius:26px!important;background:linear-gradient(125deg,#6931cf,#4257d6 65%,#178db5)!important;color:#fff!important;box-shadow:0 12px 35px #6336c54d!important;cursor:pointer}
+#aiButton .ai-launch-icon{display:grid!important;place-items:center;width:50px;height:50px;border-radius:17px;background:#ffffff22;font-size:31px}
+#aiButton .ai-launch-copy{display:flex!important;flex-direction:column;align-items:flex-start;line-height:1.4}
+#aiButton strong{font-size:17px;color:white}
+#aiButton small{font-size:11px;color:#e5e5ff;font-weight:400}
+#aiButton:hover{filter:brightness(1.1)}
+#aiButton:focus-visible{outline:3px solid #945cff;outline-offset:4px}
+#aiChat{z-index:10002!important;right:20px!important;bottom:112px!important;width:min(400px,calc(100vw - 32px))!important;height:min(560px,calc(100dvh - 150px))!important}
+#aiChat.open{display:flex!important;flex-direction:column!important;visibility:visible!important;opacity:1!important;transform:none!important;pointer-events:auto!important}
+#aiChat .ai-messages{flex:1;min-height:0;overflow-y:auto}
+#aiChat .ai-input-area{flex-shrink:0}
+@media(max-width:600px){#aiButton{right:16px!important;bottom:16px!important;min-height:70px!important;padding:10px 16px 10px 10px!important}#aiButton strong{font-size:15px}#aiChat{right:16px!important;bottom:102px!important}}
+</style>
 </head>
 
 <body>
@@ -1318,10 +1333,10 @@
   <button
     id="aiButton"
     class="ai-floating-button"
-    aria-label="Open Jalali AI Assistant"
+    aria-label="Open Jalali AI Assistant" aria-controls="aiChat" aria-expanded="false"
   >
-    🤖
-    <span>Jalali AI</span>
+    <span class="ai-launch-icon" aria-hidden="true">✦</span>
+    <span class="ai-launch-copy"><strong>Ask Jalali AI</strong><small>Services · Prices · Demos</small></span>
   </button>
 
 
@@ -1444,12 +1459,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="site-editor.js?v=20260925-cms-hero-fix"></script>
 
-<script>
-document.addEventListener("DOMContentLoaded",function(){
- const b=document.querySelector(".menu-toggle"),n=document.querySelector(".nav-links");
- if(b&&n){b.addEventListener("click",function(){n.classList.toggle("open");b.setAttribute("aria-expanded",n.classList.contains("open"));});}
-});
-</script>
+<script src="script.js?v=20261002-ai-restored-v2"></script>
 <script id="interactive-studio-effect">
 
 (() => {
