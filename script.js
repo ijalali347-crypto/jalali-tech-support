@@ -46,8 +46,8 @@ const aiInput=document.getElementById("aiInput");
 const aiMessages=document.getElementById("aiMessages");
 const demoSession={waiting:false};
 
-function openAI(){if(!aiChat)return;aiChat.classList.add("open");aiChat.setAttribute("aria-hidden","false");setTimeout(()=>aiInput&&aiInput.focus(),200);}
-function closeAI(){if(!aiChat)return;aiChat.classList.remove("open");aiChat.setAttribute("aria-hidden","true");}
+function openAI(){if(!aiChat)return;aiChat.classList.add("open");aiChat.setAttribute("aria-hidden","false");if(aiButton)aiButton.setAttribute("aria-expanded","true");setTimeout(()=>aiInput&&aiInput.focus(),200);}
+function closeAI(){if(!aiChat)return;aiChat.classList.remove("open");aiChat.setAttribute("aria-hidden","true");if(aiButton){aiButton.setAttribute("aria-expanded","false");aiButton.focus();}}
 if(aiButton) aiButton.addEventListener("click",openAI);
 if(aiClose) aiClose.addEventListener("click",closeAI);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeAI();});
@@ -121,7 +121,7 @@ function addDemoCard(name){
   const card=document.createElement("section");card.className="ai-demo-card ai-demo-full";
   const tag=document.createElement("span");tag.className="ai-demo-tag";tag.textContent=copy.icon+" "+copy.type.toUpperCase()+" WEBSITE DEMO";
   const browser=document.createElement("div");browser.className="demo-browser";
-  browser.innerHTML='<div class="demo-browser-bar"><span>● ● ●</span><b>'+name+'</b></div>';
+  const bar=document.createElement('div');bar.className='demo-browser-bar';const dots=document.createElement('span');dots.textContent='● ● ●';const title=document.createElement('b');title.textContent=name;bar.append(dots,title);browser.appendChild(bar);
   const hero=document.createElement("div");hero.className="demo-hero";
   const brand=document.createElement("div");brand.className="demo-brand";brand.textContent=copy.icon+" "+name;
   const h=document.createElement("h3");h.textContent=copy.hero;
@@ -133,7 +133,7 @@ function addDemoCard(name){
   const sectionTitle=document.createElement("strong");sectionTitle.className="demo-section-title";sectionTitle.textContent=copy.type==="Real Estate"?"Featured properties":"Popular choices";
   const grid=document.createElement("div");grid.className="demo-products";
   copy.items.forEach((x,i)=>{const item=document.createElement("div");item.className="demo-product";const pic=document.createElement("div");pic.className="demo-product-pic";pic.textContent=x.split(" ")[0];const label=document.createElement("b");label.textContent=x.substring(x.indexOf(" ")+1);const small=document.createElement("small");small.textContent=i%2?"Popular choice":"Featured";item.append(pic,label,small);grid.appendChild(item);});
-  const about=document.createElement("div");about.className="demo-about";about.innerHTML="<b>Why choose "+name+"?</b><span>Quality service • Easy ordering • Mobile friendly • Direct contact</span>";
+  const about=document.createElement("div");about.className="demo-about";const aboutTitle=document.createElement("b");aboutTitle.textContent="Why choose "+name+"?";const aboutCopy=document.createElement("span");aboutCopy.textContent="Quality service • Easy ordering • Mobile friendly • Direct contact";about.append(aboutTitle,aboutCopy);
   const contact=document.createElement("div");contact.className="demo-contact";contact.textContent="Home  •  "+(copy.type==="Real Estate"?"Properties":"Services")+"  •  About  •  Contact";
   browser.append(hero,featureRow,sectionTitle,grid,about,contact);
   const action=document.createElement("button");action.type="button";action.className="demo-request";action.textContent="I WANT A WEBSITE LIKE THIS";
