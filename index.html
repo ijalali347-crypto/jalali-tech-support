@@ -87,9 +87,86 @@
 #aiChat .ai-input-area{flex-shrink:0}
 @media(max-width:600px){#aiButton{right:16px!important;bottom:16px!important;min-height:70px!important;padding:10px 16px 10px 10px!important}#aiButton strong{font-size:15px}#aiChat{right:16px!important;bottom:102px!important}}
 </style>
+<style id="sitewide-studio-theme">
+/* Shared pastel studio palette */
+body.studio-site {--studio-ink:#29222f;--studio-muted:#665c71;--studio-purple:#853cac;background:#f8f6f1!important;color:var(--studio-ink)!important}
+.studio-site .section,.studio-site .contact-cta {position:relative;isolation:isolate;overflow:hidden;background:#f8f6f1!important;border-top:1px solid #ddd4e342;padding:90px 0!important}
+.studio-site .section::before,.studio-site .contact-cta::before {content:"";position:absolute;inset:-10%;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 10% 20%,#f1c8e780,transparent 45%),radial-gradient(ellipse at 90% 75%,#bae7ed80,transparent 48%),radial-gradient(ellipse at 60% 40%,#d9c8f54d,transparent 52%);animation:pastelSectionDrift 18s ease-in-out infinite alternate}
+.studio-site .section:nth-of-type(even)::before {background:radial-gradient(ellipse at 85% 20%,#dbbff080,transparent 45%),radial-gradient(ellipse at 10% 80%,#c0eae180,transparent 48%),radial-gradient(ellipse at 45% 60%,#f4d3c980,transparent 50%);animation-delay:-8s}
+.studio-site .section::after,.studio-site .contact-cta::after {content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle 220px at var(--touch-x,70%) var(--touch-y,35%),#eaaeec80,transparent 68%),radial-gradient(circle 150px at var(--touch-x,70%) var(--touch-y,35%),#b8e5f07a,transparent 90%);opacity:var(--touch-active,0);transition:opacity .7s ease}
+@keyframes pastelSectionDrift {to{transform:translate(3%,-3%) scale(1.05)}}
+.studio-site .section-heading {max-width:760px!important;margin-bottom:42px!important}
+.studio-site .section-heading > span,.studio-site .section-label,.studio-site .quote-info > span,.studio-site .contact-cta > .container > div > span {font-size:11px!important;letter-spacing:2px!important;color:#88439d!important}
+.studio-site .section-heading h2,.studio-site .about-text h2,.studio-site .quote-info h2,.studio-site .contact-cta h2 {font-size:clamp(32px,4.2vw,54px)!important;line-height:1.12!important;letter-spacing:-.045em!important;margin-top:14px!important;background:linear-gradient(110deg,#a73880,#7544be 48%,#187e95)!important;background-clip:text!important;-webkit-background-clip:text!important;color:#853cac!important;-webkit-text-fill-color:transparent!important;text-shadow:none!important}
+.studio-site .section-heading p,.studio-site .about-text p,.studio-site .quote-info p,.studio-site .contact-cta p {font-size:15px!important;line-height:1.8!important;color:var(--studio-muted)!important;margin-top:16px!important}
+.studio-site .services-grid,.studio-site .pricing-grid,.studio-site .portfolio-grid,.studio-site .steps,.studio-site .why-grid {gap:20px!important}
+.studio-site .service-card,.studio-site .price-card,.studio-site .step,.studio-site .why-grid > div,.studio-site .quote-form {background:linear-gradient(145deg,#ffffffed,#faf5ffdc)!important;border:1px solid #c8b6d64f!important;border-radius:22px!important;box-shadow:0 12px 38px #8f71ab0d!important;padding:28px!important;backdrop-filter:blur(8px)}
+.studio-site .service-card:nth-child(3n+2),.studio-site .price-card:nth-child(3n+2),.studio-site .why-grid > div:nth-child(3n+2) {background:linear-gradient(145deg,#ffffffef,#effbfbdd)!important}
+.studio-site .service-card:nth-child(3n),.studio-site .price-card:nth-child(3n),.studio-site .why-grid > div:nth-child(3n) {background:linear-gradient(145deg,#ffffffef,#fff0f7dc)!important}
+.studio-site .service-card:hover,.studio-site .price-card:hover {border-color:#b97ddc!important;box-shadow:0 18px 45px #8f71ab1a!important}
+.studio-site .service-card h3,.studio-site .why-grid h3 {font-size:18px!important;color:var(--studio-ink)!important;line-height:1.35}
+.studio-site .service-card p,.studio-site .step p,.studio-site .why-grid p {font-size:13px!important;line-height:1.75!important;color:var(--studio-muted)!important;margin:12px 0!important}
+.studio-site .service-icon {width:52px;height:52px;display:grid;place-items:center;background:linear-gradient(135deg,#f6d3ec,#d9d4fb,#c8edf3);border-radius:16px;font-size:24px!important;color:#7846a6!important;margin-bottom:20px!important}
+.studio-site .service-card strong {font-size:13px!important;color:#744099!important;margin:18px 0!important}
+.studio-site .service-card a {font-size:11px!important;color:#7a3ca5!important;letter-spacing:1px}
+.studio-site .price-card {display:flex;flex-direction:column;min-height:360px!important}
+.studio-site .price-card.featured {border:2px solid #be86d3!important;box-shadow:0 15px 40px #ad77c626!important}
+.studio-site .popular {background:linear-gradient(110deg,#a844b0,#6774dc)!important;color:white!important;font-size:9px!important;padding:6px 10px!important;border-radius:30px!important;top:14px!important;right:14px!important}
+.studio-site .price-card h3 {font-size:11px!important;color:#736278!important;letter-spacing:1.2px;margin-top:8px}
+.studio-site .price {font-size:48px!important;line-height:1.25!important;color:#683593!important;margin:16px 0 20px!important}
+.studio-site .price small {font-size:20px!important}
+.studio-site .price-card ul {margin-bottom:24px!important}
+.studio-site .price-card li {font-size:13px!important;line-height:1.6!important;color:var(--studio-muted)!important;margin:8px 0!important}
+.studio-site .price-card li::before {color:#974fb1!important}
+.studio-site .price-card .btn {margin-top:auto}
+.studio-site .btn:not(.btn-whatsapp) {background:linear-gradient(115deg,#8948b4,#6575cc)!important;color:white!important;border-color:transparent!important;box-shadow:0 8px 20px #9666bd20!important}
+.studio-site .btn {min-height:46px;padding:0 20px;border-radius:50px!important;font-size:11px!important;letter-spacing:.7px}
+.studio-site .btn-whatsapp {background:#23bf70!important;color:#fff!important}
+.studio-site .project {min-height:310px!important;border-radius:22px!important;border:1px solid #c8b6d65c!important;box-shadow:0 12px 38px #8f71ab13!important;align-items:flex-end}
+.studio-site .project::before {background:linear-gradient(180deg,transparent 5%,#fffaf7e8 54%,#fffaf7 100%)!important}
+.studio-site .project > div {padding:26px!important}
+.studio-site .project small {color:#93459f!important;font-size:10px!important;letter-spacing:1.2px}
+.studio-site .project h3 {color:var(--studio-ink)!important;font-size:20px!important;line-height:1.3!important;margin-top:8px!important}
+.studio-site .project p {color:#605567!important;font-size:13px!important;line-height:1.7!important;margin-top:8px!important}
+.studio-site .project-button {color:white!important;background:linear-gradient(115deg,#af559e,#7972d1)!important;font-size:10px!important;padding:10px 16px!important;margin-top:16px!important;border-radius:50px!important}
+.studio-site .step > strong {font-size:40px!important;color:#bc85cc!important;font-weight:500!important;line-height:1}
+.studio-site .step h3 {font-size:13px!important;color:#443449!important;line-height:1.6;margin-top:20px!important}
+.studio-site .why-grid span {font-size:25px!important}
+.studio-site .quote-form label {font-size:12px!important;color:#514257!important;gap:8px!important}
+.studio-site .quote-form {gap:20px!important}
+.studio-site .quote-form input,.studio-site .quote-form select,.studio-site .quote-form textarea {background:#fffafeee!important;color:#352b3d!important;border:1px solid #c8b4d170!important;border-radius:12px!important;font-size:14px!important;padding:13px!important}
+.studio-site .quote-form input::placeholder,.studio-site .quote-form textarea::placeholder {color:#88788f}
+.studio-site .quote-form input:focus,.studio-site .quote-form select:focus,.studio-site .quote-form textarea:focus {outline:2px solid #b688cd!important;outline-offset:2px}
+.studio-site .contact-links a {color:#74478c!important;font-size:14px!important;overflow-wrap:anywhere}
+.studio-site .form-message {color:#635080!important;font-size:13px!important}
+.studio-site .faq details {background:#ffffffa3!important;border:1px solid #cdb8db47!important;border-radius:16px!important;padding:20px 24px!important;margin-bottom:12px}
+.studio-site .faq summary {color:#413148!important;font-size:15px!important;line-height:1.7}
+.studio-site .faq details p {color:var(--studio-muted)!important;font-size:14px!important;line-height:1.85!important}
+.studio-site footer {background:linear-gradient(135deg,#f7eef7,#f5f2fa 55%,#ecf6f6)!important;border-top:1px solid #dacddc!important;padding:50px 0 110px!important}
+.studio-site footer .logo strong {color:#362a40!important;font-size:15px!important}
+.studio-site footer .logo small {color:#7d6b86!important;font-size:10px!important}
+.studio-site .footer-grid p,.studio-site .footer-links a,.studio-site .footer-contact a {color:#6a5875!important;font-size:12px!important;line-height:1.8}
+.studio-site .copyright {color:#7a6881!important;border-color:#d9cbdc!important;font-size:11px!important}
+.studio-site .ai-chat {background:#fcf9ff!important;border-color:#d7c0e9!important;box-shadow:0 20px 60px #71588030!important}
+.studio-site .ai-chat-header {background:linear-gradient(115deg,#f3ddf2,#e5ddfa,#d7eef4)!important}
+.studio-site .ai-chat-title strong {color:#453251!important}
+.studio-site .ai-chat-title small {color:#267d55!important}
+.studio-site .ai-close {color:#5b3e70!important}
+.studio-site .ai-message.bot {background:#efe6f8!important;color:#4d385c!important}
+.studio-site .ai-message.bot strong {color:#483052!important}
+.studio-site .ai-message.user {background:linear-gradient(115deg,#a050b5,#6977d0)!important;color:white!important}
+.studio-site .ai-quick-buttons button {background:#faf5ff!important;color:#6d4283!important;border-color:#cfb7dc!important}
+.studio-site .ai-input-area {background:#f9f4fc!important;border-color:#dfcde7!important}
+.studio-site .ai-input-area input {background:white!important;border-color:#d3bddd!important;color:#44334e!important}
+.studio-site .ai-input-area button {background:linear-gradient(135deg,#a84cae,#6e79d4)!important}
+.studio-site a:focus-visible,.studio-site button:focus-visible {outline:3px solid #ac78d4;outline-offset:4px}
+@media(max-width:650px){.studio-site .section,.studio-site .contact-cta{padding:60px 0!important}.studio-site .service-card,.studio-site .price-card,.studio-site .step,.studio-site .why-grid > div,.studio-site .quote-form{padding:22px!important}.studio-site .project{min-height:290px!important}.studio-site .section-heading h2,.studio-site .about-text h2,.studio-site .quote-info h2{font-size:34px!important}.studio-site .services-grid,.studio-site .pricing-grid,.studio-site .portfolio-grid{grid-template-columns:1fr!important}.studio-site .steps{grid-template-columns:1fr 1fr!important}.studio-site .why-grid{grid-template-columns:1fr!important}.studio-site .quote-form{grid-template-columns:1fr!important}.studio-site .footer-grid{grid-template-columns:1fr!important}}
+@media(max-width:380px){.studio-site .steps{grid-template-columns:1fr!important}}
+@media(prefers-reduced-motion:reduce){.studio-site .section::before,.studio-site .contact-cta::before{animation:none!important}.studio-site .section::after,.studio-site .contact-cta::after{transition:none!important}}
+</style>
 </head>
 
-<body>
+<body class="studio-site">
 
   <!-- ================= HEADER ================= -->
 
@@ -1548,6 +1625,19 @@
 })();
 
 </script>
+<script id="sitewide-colour-interaction">(() => {
+ document.querySelectorAll('.section,.contact-cta').forEach(section => {
+  let timer, queued=false, x=0, y=0;
+  function move(event) {
+   const rect=section.getBoundingClientRect(); x=event.clientX-rect.left; y=event.clientY-rect.top;
+   if(!queued){queued=true;requestAnimationFrame(()=>{section.style.setProperty('--touch-x',x+'px');section.style.setProperty('--touch-y',y+'px');section.style.setProperty('--touch-active','1');queued=false})}
+   clearTimeout(timer);timer=setTimeout(()=>section.style.setProperty('--touch-active','0'),1100);
+  }
+  section.addEventListener('pointermove',move,{passive:true});
+  section.addEventListener('pointerdown',move,{passive:true});
+  section.addEventListener('pointerleave',()=>section.style.setProperty('--touch-active','0'),{passive:true});
+ });
+})();</script>
 </body>
 
 </html>
